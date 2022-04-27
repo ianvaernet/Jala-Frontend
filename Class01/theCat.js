@@ -8,15 +8,15 @@ class Cat {
     this.#tiredness = tiredness;
   }
 
-  getHunger() {
+  get hunger() {
     return this.#hunger;
   }
 
-  getLoneliness() {
+  get loneliness() {
     return this.#loneliness;
   }
 
-  getTiredness() {
+  get tiredness() {
     return this.#tiredness;
   }
 

@@ -6,9 +6,11 @@ class PokemonCard extends HTMLElement {
     const templateElem = document.getElementById('pokemonCardTemplate');
     const content = templateElem.content.cloneNode(true);
 
-    content.querySelector('.card').style.backgroundColor = this.getAttribute('color');
+    content.querySelector('.card').style.backgroundColor = this.getAttribute('backgroundColor');
     content.querySelector('img.image').setAttribute('src', this.getAttribute('image'));
-    content.querySelector('.card>.name').innerText = this.getAttribute('name');
+    const name = content.querySelector('.card>.name');
+    name.innerText = this.getAttribute('name');
+    name.style.color = this.getAttribute('color');
 
     shadow.appendChild(content);
   }

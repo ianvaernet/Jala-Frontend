@@ -4,49 +4,53 @@ body {
 
 .container {
   display: grid;
-  grid-template-rows: 70px 1fr 65px;
+  grid-template-rows: 70px auto 70px;
   grid-template-areas:
     'header'
     'main'
     'footer';
 }
 
-header {
+.header {
   grid-area: header;
   display: flex;
+  justify-content: space-between;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 20px;
   font-weight: bold;
-  padding: 10px 0;
+  padding: 10px 50px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
   background-color: #000;
 }
 .logo {
   height: 100%;
-  margin: 0 50px;
+}
+.header-right-section {
+  display: flex;
+  align-items: center;
 }
 .header-text {
   color: #fff;
 }
+.header-pokeball {
+  height: 90%;
+}
 
-main {
+.main {
   grid-area: main;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  grid-column-start: 1;
 }
 
-footer {
+.footer {
   grid-area: footer;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #000;
 }
-
 .social-logo {
-  width: 55px;
-  height: 55px;
+  height: 75%;
   margin: 0 10px;
 }

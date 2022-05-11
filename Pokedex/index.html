@@ -9,12 +9,15 @@
   </head>
   <body>
     <div class="container">
-      <header>
+      <header class="header">
         <img class="logo" src="img/pokemon-logo.webp" />
-        <p class="header-text">Pokédex</p>
+        <div class="header-right-section">
+          <p class="header-text">Pokédex</p>
+          <img class="header-pokeball" src="img/pokeball.png" />
+        </div>
       </header>
-      <main id="pokedex"></main>
-      <footer>
+      <main id="pokedex" class="main"></main>
+      <footer class="footer">
         <img class="social-logo" src="img/facebook-logo.png" />
         <img class="social-logo" src="img/youtube-logo.png" />
         <img class="social-logo" src="img/instagram-logo.webp" />
@@ -27,6 +30,10 @@
         .card {
           margin: 10px;
           border-radius: 20px;
+        }
+        .card:hover {
+          transform: scale(1.15);
+          cursor: pointer;
         }
         .name {
           text-transform: capitalize;

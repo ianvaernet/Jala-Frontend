@@ -2,8 +2,11 @@ body {
   margin: 0;
 }
 
-@background-color: #000;
-@text-color: #fff;
+#colors() {
+  background: #000;
+  text: #fff;
+}
+
 @font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 .container {
@@ -23,7 +26,7 @@ body {
   font-size: 20px;
   font-weight: bold;
   padding: 10px 50px;
-  background-color: @background-color;
+  background-color: #colors[background];
 
   .logo {
     height: 100%;
@@ -34,7 +37,7 @@ body {
     align-items: center;
 
     .text {
-      color: @text-color;
+      color: #colors[text];
     }
 
     .pokeball {
@@ -55,7 +58,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: @background-color;
+  background-color: #colors[background];
 
   .social-logo {
     height: 75%;

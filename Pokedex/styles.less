@@ -9,7 +9,7 @@ body {
 
 @font-family: Verdana, Geneva, Tahoma, sans-serif;
 
-.container {
+.div-container {
   display: grid;
   grid-template-rows: 70px auto 70px;
   grid-template-areas:
@@ -32,12 +32,13 @@ body {
     height: 100%;
   }
 
-  .right-section {
+  .title-section {
     display: flex;
     align-items: center;
 
     .text {
       color: #colors[text];
+      margin: 0;
     }
 
     .pokeball {
@@ -61,7 +62,11 @@ body {
   background-color: #colors[background];
 
   .social-logo {
-    height: 75%;
+    height: 65%;
     margin: 0 10px;
   }
+}
+
+.custom-tooltip {
+  --bs-tooltip-bg: var(--bs-primary);
 }

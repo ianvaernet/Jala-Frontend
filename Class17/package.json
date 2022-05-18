@@ -1,0 +1,11 @@
+{
+  "name": "taskrunners",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "node -e \"if(process.env.npm_execpath.match('yarn')) throw new Error('You must use NPM to install, not yarn')\""
+  },
+  "author": "",
+  "license": "ISC"
+}

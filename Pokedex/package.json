@@ -19,6 +19,9 @@
     "grunt-contrib-less": "^3.0.0",
     "grunt-contrib-uglify": "^5.2.1",
     "grunt-contrib-watch": "^1.1.0",
-    "grunt-html-build": "^0.7.1"
+    "grunt-html-build": "^0.7.1",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0",
+    "gulp-uglify": "^3.0.2"
   }
 }

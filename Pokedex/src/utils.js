@@ -1,4 +1,4 @@
-const pokemonColorMap = {
+export const pokemonColorMap = {
   1: '#4ca04c', //green
   2: '#4ca04c',
   3: '#4ca04c',
@@ -152,11 +152,10 @@ const pokemonColorMap = {
   151: '#ffb6c3',
 };
 
-function getPokemonImageUri(id) {
+export function getPokemonImageUri(id) {
   const imageId = ('00' + id).slice(-3); // para 1 => 001
   return `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${imageId}.png`;
 }
 
-const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-console.log(tooltipTriggerList);
-const tooltipList = [...tooltipTriggerList].map((tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl));
+export const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+export const tooltipList = [...tooltipTriggerList].map((tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl));

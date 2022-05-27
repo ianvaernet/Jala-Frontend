@@ -1,4 +1,4 @@
-class PokemonCard extends HTMLElement {
+export class PokemonCard extends HTMLElement {
   constructor() {
     super();
 

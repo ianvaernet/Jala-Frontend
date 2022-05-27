@@ -1,3 +1,7 @@
+import { PokemonCard } from './pokemonCard';
+import { pokemonColorMap, getPokemonImageUri } from './utils';
+import './styles.less';
+
 function savePokemon(event) {
   event.preventDefault();
   const id = Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2);
@@ -8,12 +12,11 @@ function savePokemon(event) {
   const newPokemon = { id, name, backgroundColor, color, image };
   const customPokemons = JSON.parse(localStorage.getItem('customPokemons')) ?? [];
   customPokemons.push(newPokemon);
-  console.log(customPokemons);
   localStorage.setItem('customPokemons', JSON.stringify(customPokemons));
   event.currentTarget.submit();
 }
 
-async function getPokemosnData() {
+async function getPokemonsData() {
   const pokemonsData = await fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=25')
     .then((response) => response.json())
     .then((pokemons) => {
@@ -30,7 +33,7 @@ async function getPokemosnData() {
   return pokemonsData;
 }
 
-getPokemosnData().then((pokemons) => {
+getPokemonsData().then((pokemons) => {
   pokemons.forEach(({ id, name, backgroundColor, color, image }) => {
     const card = document.createElement('pokemon-card');
     card.setAttribute('id', id);
@@ -43,5 +46,3 @@ getPokemosnData().then((pokemons) => {
 
   customElements.define('pokemon-card', PokemonCard);
 });
-
-// document.getElementById('addPokemonForm').onsubmit(savePokemon);

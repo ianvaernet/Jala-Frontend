@@ -9,7 +9,6 @@ module.exports = merge(common, {
     path: path.resolve(__dirname, 'build'),
   },
   optimization: {
-    runtimeChunk: 'single',
     splitChunks: {
       chunks: 'all',
     },

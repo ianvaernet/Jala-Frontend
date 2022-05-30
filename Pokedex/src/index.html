@@ -10,7 +10,6 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="styles.css" />
     <title>Pokedex</title>
   </head>
   <body>
@@ -21,9 +20,7 @@
           <p class="text">Pokédex</p>
           <img class="pokeball" src="../img/pokeball.png" />
         </div>
-        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addPokemonModal">
-          Add Pokémon
-        </button>
+        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addPokemonModal">Add Pokémon</button>
       </header>
       <main id="pokedex" class="main"></main>
       <footer class="footer">
@@ -48,12 +45,7 @@
                 <label for="pokemonNameInput" class="form-label">Name</label>
                 <div class="row">
                   <div class="col-10 col-md-11">
-                    <input
-                      type="text"
-                      id="pokemonNameInput"
-                      class="form-control"
-                      placeholder="e.g: Pikachu"
-                    />
+                    <input type="text" id="pokemonNameInput" class="form-control" placeholder="e.g: Pikachu" />
                   </div>
                   <div class="col-2 col-md-1 d-flex align-items-center">
                     <a
@@ -72,12 +64,7 @@
                 <label for="pokemonImageURLInput" class="form-label">Image URL</label>
                 <div class="row">
                   <div class="col-10 col-md-11">
-                    <input
-                      type="text"
-                      id="pokemonImageURLInput"
-                      class="form-control"
-                      placeholder="e.g: https://your.image.com"
-                    />
+                    <input type="text" id="pokemonImageURLInput" class="form-control" placeholder="e.g: https://your.image.com" />
                   </div>
                   <div class="col-2 col-md-1 d-flex align-items-center">
                     <a
@@ -173,9 +160,4 @@
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
     crossorigin="anonymous"
   ></script>
-  <!-- build:script main -->
-  <script src="utils.js"></script>
-  <script src="pokemonCard.js"></script>
-  <script src="index.js"></script>
-  <!-- /build -->
 </html>

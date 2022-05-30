@@ -8,4 +8,10 @@ module.exports = merge(common, {
     filename: '[name].bundle.[contenthash].js',
     path: path.resolve(__dirname, 'build'),
   },
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
 });

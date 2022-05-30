@@ -8,4 +8,5 @@ module.exports = merge(common, {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
   },
+  devtool: 'eval-source-map',
 });

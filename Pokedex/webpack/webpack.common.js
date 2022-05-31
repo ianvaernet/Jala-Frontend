@@ -1,5 +1,4 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: { app: './src/index.js' },
@@ -9,8 +8,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.less$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader'],
+        test: /\.(png|webp)$/i,
+        type: 'asset',
       },
     ],
   },
@@ -18,6 +17,5 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.html',
     }),
-    new MiniCssExtractPlugin(),
   ],
 };

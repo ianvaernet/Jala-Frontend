@@ -1,6 +1,20 @@
 import { PokemonCard } from './pokemonCard';
 import { pokemonColorMap, getPokemonImageUri } from './utils';
-import './styles.less';
+import '@styles/main.less';
+
+import PokemonLogo from '../img/pokemon-logo.webp';
+import PokeballImg from '../img/pokeball.png';
+import FacebookLogo from '../img/facebook-logo.png';
+import YoutubeLogo from '../img/youtube-logo.png';
+import InstagramLogo from '../img/instagram-logo.webp';
+import TiktokLogo from '../img/tiktok-logo.png';
+
+document.getElementById('pokemon-logo').src = PokemonLogo;
+document.getElementById('pokeball-img').src = PokeballImg;
+document.getElementById('facebook-logo').src = FacebookLogo;
+document.getElementById('youtube-logo').src = YoutubeLogo;
+document.getElementById('instagram-logo').src = InstagramLogo;
+document.getElementById('tiktok-logo').src = TiktokLogo;
 
 function savePokemon(event) {
   event.preventDefault();

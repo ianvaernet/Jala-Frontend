@@ -6,9 +6,9 @@ const common = require('./webpack.common.js');
 module.exports = merge(common, {
   mode: 'development',
   output: {
-    filename: '[name].[hash].js',
+    filename: '[name].js',
     path: path.resolve(__dirname, '../dist'),
-    assetModuleFilename: 'img/[name].[ext]',
+    assetModuleFilename: 'img/[name][ext]',
   },
   devtool: 'eval-source-map',
   module: {
@@ -20,4 +20,11 @@ module.exports = merge(common, {
     ],
   },
   plugins: [new MiniCssExtractPlugin()],
+  devServer: {
+    static: {
+      directory: path.join(__dirname, '../dist'),
+    },
+    compress: true,
+    port: 9000,
+  },
 });

@@ -19,7 +19,7 @@ module.exports = merge(common, {
       },
     ],
   },
-  plugins: [new MiniCssExtractPlugin()],
+  plugins: [new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' })],
   optimization: {
     splitChunks: {
       chunks: 'all',

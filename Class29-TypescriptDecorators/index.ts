@@ -3,10 +3,17 @@ type Move = {
   power: number;
 };
 
-const checkPP = (fight: any, prop: string, descriptor: PropertyDescriptor) => {
-  console.log(descriptor.value);s
-  if (this.ppAvailable < 1) console.log('Not enough PP');
-};
+function checkPP() {
+  return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+    const originalFunction = descriptor.value;
+    descriptor.value = function (...args) {
+      if (this.ppAvailable < 1) console.log('Not enough PP');
+      else {
+        originalFunction.apply(this, args);
+      }
+    };
+  };
+}
 
 class Pokemon {
   name: string;
@@ -16,7 +23,7 @@ class Pokemon {
     this.ppAvailable = ppAvailable;
   }
 
-  @checkPP
+  @checkPP()
   figth(move: Move) {
     console.log(`${this.name} used ${move?.name}!`);
     this.ppAvailable -= 1;

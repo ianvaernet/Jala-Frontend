@@ -81,7 +81,7 @@ export class Pokemon {
       url: type.url,
     }));
     const moves = pickRandom<any>(pokemon.moves, 4);
-    Promise.all(moves.map((move) => getMoveData(move))).then((moves) => (this.moves = moves));
+    Promise.all(moves.map(({ move }) => getMoveData(move))).then((moves) => (this.moves = moves));
   }
 
   displayInfo() {

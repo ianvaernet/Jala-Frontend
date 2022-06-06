@@ -1,0 +1,19 @@
+{
+  "name": "pokets",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "start": "tsc ./src/main.ts --target ES5 --experimentalDecorators --emitDecoratorMetadata --lib \"es2016, dom\" && node ./src/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.7.3"
+  },
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
+}

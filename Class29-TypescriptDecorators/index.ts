@@ -7,9 +7,10 @@ function checkPP() {
   return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
     const originalFunction = descriptor.value;
     descriptor.value = function (...args) {
-      if (this.ppAvailable < 1) console.log('Not enough PP');
-      else {
+      if (this.ppAvailable > 0) {
         originalFunction.apply(this, args);
+      } else {
+        console.log('Not enough PP');
       }
     };
   };

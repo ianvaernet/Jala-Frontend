@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "lib": ["es2018", "dom"],
+    "module": "commonjs",
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "experimentalDecorators": true,
+    "sourceMap": true
+  },
+}

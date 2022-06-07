@@ -76,7 +76,7 @@ export class Pokemon {
   buildFieldsPokemon(pokemon: any) {
     this.id = pokemon.id;
     this.name = pokemon.name;
-    this.types = pokemon.types.map((type: { name: string; url: string }) => ({
+    this.types = pokemon.types.map(({ type }: { type: { name: string; url: string } }) => ({
       name: type.name,
       url: type.url,
     }));
@@ -96,10 +96,24 @@ export class Pokemon {
   }
 }
 
+function randomIds(idsToGenerate: number) {
+  const ids = [];
+  const MIN_ID = 1;
+  const MAX_ID = 898;
+  for (let generatedIds = 0; generatedIds < idsToGenerate; generatedIds++) {
+    ids.push(getRandomNumber(MIN_ID, MAX_ID));
+  }
+  return (target, prop) => {
+    Object.defineProperty(target, prop, { value: ids });
+  };
+}
+
 export class PokemonTrainer {
   name: string;
   pokemons: Pokemon[] = [];
-  listOfIds: number[] = [2, 4];
+  @randomIds(3)
+  listOfIds: number[];
+
   constructor(name: string) {
     this.name = name;
   }

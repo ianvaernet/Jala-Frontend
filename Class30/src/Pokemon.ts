@@ -13,14 +13,19 @@ List of goals:
   - re-write decortator to get new pokemons Ids in PokemonTrainer class 
 */
 
-export function getSinglePokemon(id: string | number): Promise<AxiosResponse> {
-  return axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
-}
+const MIN_ID = 1;
+const MAX_ID = 898;
 
-function getNewPokemons<T extends { new (...args: any[]): {} }>(constructor: T) {
-  return class extends constructor {
-    listOfIds = [1, 2, 3];
-  };
+type PokemonData = {
+  abilities: { ability: { name: string; url: string } }[];
+  id: number;
+  name: string;
+  moves: { move: { name: string; url: string } }[];
+  types: { type: { name: string; url: string } }[];
+};
+
+function getSinglePokemon(id: string | number): Promise<AxiosResponse<PokemonData>> {
+  return axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
 }
 
 function getRandomNumber(min: number, max: number) {
@@ -69,18 +74,18 @@ export class Pokemon {
   moves: Move[] = [];
   types: Type[] = [];
 
-  constructor(pokemonResult: any) {
+  constructor(pokemonResult: PokemonData) {
     this.buildFieldsPokemon(pokemonResult);
   }
 
-  buildFieldsPokemon(pokemon: any) {
+  buildFieldsPokemon(pokemon: PokemonData) {
     this.id = pokemon.id;
     this.name = pokemon.name;
-    this.types = pokemon.types.map(({ type }: { type: { name: string; url: string } }) => ({
+    this.types = pokemon.types.map(({ type }: PokemonData['types'][number]) => ({
       name: type.name,
       url: type.url,
     }));
-    const moves = pickRandom<any>(pokemon.moves, 4);
+    const moves = pickRandom<PokemonData['moves'][number]>(pokemon.moves, 4);
     Promise.all(moves.map(({ move }) => getMoveData(move))).then((moves) => (this.moves = moves));
   }
 
@@ -96,6 +101,12 @@ export class Pokemon {
   }
 }
 
+function getNewPokemons<T extends { new (...args: any[]): {} }>(constructor: T) {
+  return class extends constructor {
+    listOfIds = [1, 2, 3].map(() => getRandomNumber(MIN_ID, MAX_ID));
+  };
+}
+
 function randomIds(idsToGenerate: number) {
   const ids = [];
   const MIN_ID = 1;
@@ -108,6 +119,7 @@ function randomIds(idsToGenerate: number) {
   };
 }
 
+@getNewPokemons
 export class PokemonTrainer {
   name: string;
   pokemons: Pokemon[] = [];

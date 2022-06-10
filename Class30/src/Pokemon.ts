@@ -24,12 +24,18 @@ type PokemonData = {
   types: { type: { name: string; url: string } }[];
 };
 
+export const sleep = (miliseconds: number) => new Promise((resolve) => setTimeout(resolve, miliseconds));
+
 function getSinglePokemon(id: string | number): Promise<AxiosResponse<PokemonData>> {
   return axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
 }
 
 function getRandomNumber(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function capitalize(string: string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function pickRandom<T>(array: T[], elementsToPick: number): T[] {
@@ -89,37 +95,42 @@ export class Pokemon {
     Promise.all(moves.map(({ move }) => getMoveData(move))).then((moves) => (this.moves = moves));
   }
 
-  displayInfo() {
+  async displayInfo() {
+    while (this.moves.length === 0) {
+      await sleep(100);
+    }
     console.log(`==========================`);
-    console.log(`${this.id} ${this.name}`);
+    console.log(`${this.id} - ${this.name.toUpperCase()}`);
+    console.log('TYPES:');
     this.types.forEach((type) => {
-      console.log(`${type.name}`);
+      console.log(` - ${capitalize(type.name)}`);
     });
+    console.log('MOVES:');
     this.moves.forEach((move) => {
-      console.log(`${move.name}`);
+      console.log(` - ${capitalize(move.name)}`);
+      console.log(`    url: ${move.url}`);
+      console.log(`    type: ${move.type}`);
+      console.log(`    damage: ${move.damage}`);
+      console.log(`    powerPoints: ${move.powerPoints}`);
+      console.log(`    accuracy: ${move.accuracy}`);
     });
   }
 }
 
 function getNewPokemons<T extends { new (...args: any[]): {} }>(constructor: T) {
   return class extends constructor {
-    listOfIds = [1, 2, 3].map(() => getRandomNumber(MIN_ID, MAX_ID));
+    listOfIds = Array.from({ length: 3 }).map(() => getRandomNumber(MIN_ID, MAX_ID));
   };
 }
 
 function randomIds(idsToGenerate: number) {
-  const ids = [];
-  const MIN_ID = 1;
-  const MAX_ID = 898;
-  for (let generatedIds = 0; generatedIds < idsToGenerate; generatedIds++) {
-    ids.push(getRandomNumber(MIN_ID, MAX_ID));
-  }
+  const ids = Array.from({ length: idsToGenerate }).map(() => getRandomNumber(MIN_ID, MAX_ID));
   return (target, prop) => {
     Object.defineProperty(target, prop, { value: ids });
   };
 }
 
-@getNewPokemons
+// @getNewPokemons
 export class PokemonTrainer {
   name: string;
   pokemons: Pokemon[] = [];
@@ -141,8 +152,8 @@ export class PokemonTrainer {
   async showTeam() {
     await this.getPokemons();
     console.log('Trainer:', this.name);
-    this.pokemons.forEach((pokemon) => {
-      pokemon.displayInfo();
+    this.pokemons.forEach(async (pokemon) => {
+      await pokemon.displayInfo();
     });
   }
 }

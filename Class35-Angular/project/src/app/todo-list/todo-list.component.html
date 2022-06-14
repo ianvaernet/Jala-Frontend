@@ -1,0 +1,7 @@
+<ul class="todo-list">
+  <li *ngFor="let toDo of toDos; let i = index">
+    <input type="checkbox" class="toggle" [checked]="toDo.completed" />
+    <label>{{ toDo.label }}</label>
+    <div class="destroy" (click)="deleteToDo(i)"></div>
+  </li>
+</ul>

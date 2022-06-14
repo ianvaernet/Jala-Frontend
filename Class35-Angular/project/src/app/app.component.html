@@ -1,5 +1,10 @@
 <div class="todoapp" role="main">
   <h1>Todos</h1>
-  <input type="text" placeholder="What needs to be done?" />
-  <app-list-item></app-list-item>
+  <input
+    type="text"
+    placeholder="What needs to be done?"
+    [(ngModel)]="toDoInput"
+    (keydown)="addToDo($event)"
+  />
+  <app-todo-list [toDos]="toDos"></app-todo-list>
 </div>

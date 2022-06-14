@@ -1,7 +1,18 @@
 <ul class="todo-list">
-  <li *ngFor="let toDo of toDos; let i = index">
-    <input type="checkbox" class="toggle" [checked]="toDo.completed" />
+  <li
+    *ngFor="let toDo of toDos; let i = index"
+    [class.completed]="toDo.completed"
+  >
+    <input
+      type="checkbox"
+      class="toggle"
+      [ngModel]="toDo.completed"
+      (change)="toggleCompleted(i)"
+    />
     <label>{{ toDo.label }}</label>
     <div class="destroy" (click)="deleteToDo(i)"></div>
+  </li>
+  <li *ngIf="toDos.length">
+    <label>{{ pendingToDos.length }} items left</label>
   </li>
 </ul>

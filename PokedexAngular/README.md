@@ -1,8 +1,9 @@
 # Pokedex Angular
 
-## Development server
+## How to start
 
-To start the project run `npm start` and navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. To install all the dependencies run `npm install`
+2. To start the project run `npm start` and navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Build
 

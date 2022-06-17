@@ -5,7 +5,7 @@
     class="new-todo"
     placeholder="What needs to be done?"
     [(ngModel)]="toDoInput"
-    (keydown)="addToDo($event)"
+    (keydown.enter)="addToDo()"
   />
   <app-todo-list [toDos]="toDos"></app-todo-list>
 </div>

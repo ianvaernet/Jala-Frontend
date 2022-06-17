@@ -1,7 +1,7 @@
 <ul class="todo-list">
   <li
     *ngFor="let toDo of toDos; let i = index"
-    [class.completed]="toDo.completed"
+    [ngClass]="{ completed: toDo.completed }"
   >
     <input
       type="checkbox"

@@ -13,14 +13,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {}
 
-  addToDo(event: any) {
-    if (event.key === 'Enter') {
-      this.toDos.push({ label: this.toDoInput, completed: false });
-      this.toDoInput = '';
-    }
-  }
-
-  deleteToDo(index: number) {
-    this.toDos.splice(index, 1);
+  addToDo() {
+    this.toDos.push({ label: this.toDoInput, completed: false });
+    this.toDoInput = '';
   }
 }

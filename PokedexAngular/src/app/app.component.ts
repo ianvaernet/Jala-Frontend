@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PokemonService } from './services/pokemon.service';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  getPokemonImageUri(id: number) {
-    const imageId = ('00' + id).slice(-3); // para 1 => 001
-    return `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${imageId}.png`;
-  }
+  pokemons = this.pokemonService.getPokemons();
+
+  constructor(private pokemonService: PokemonService) {}
 }

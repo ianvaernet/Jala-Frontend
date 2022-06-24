@@ -8,6 +8,5 @@ import { Pokemon } from '../types';
 })
 export class PokemonCardComponent {
   @Input() pokemon!: Pokemon;
-
   constructor() {}
 }

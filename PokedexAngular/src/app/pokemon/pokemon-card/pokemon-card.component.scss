@@ -1,7 +1,6 @@
 $grey: #eaeaea;
 
 .card {
-  background-color: #ffffff;
   padding: 25px 50px;
   border: 1px solid $grey;
   border-radius: 15px;
@@ -12,7 +11,11 @@ $grey: #eaeaea;
     font-family: "Segoe UI", sans-serif;
     font-size: 1.5rem;
     font-weight: bold;
+    color: #fff;
     text-transform: capitalize;
     text-align: center;
+  }
+  .title.color-black {
+    color: #000;
   }
 }

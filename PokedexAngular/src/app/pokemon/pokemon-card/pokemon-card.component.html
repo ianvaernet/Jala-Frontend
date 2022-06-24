@@ -1,4 +1,9 @@
-<div class="card">
+<div class="card" [ngStyle]="{ 'background-color': pokemon.background }">
   <img src="{{ pokemon.image }}" alt="{{ pokemon.name }}" />
-  <p class="title">{{ pokemon.name }}</p>
+  <p
+    class="title"
+    [ngClass]="{ 'color-black': pokemon.background.startsWith('#f') }"
+  >
+    {{ pokemon.name }}
+  </p>
 </div>

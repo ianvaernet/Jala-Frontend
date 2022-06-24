@@ -1,9 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-
-export type PokemonFromApi = { name: string; url: string };
-export type Pokemon = { name: string; url: string; image: string };
+import { PokemonFromApi } from './types';
 
 @Injectable({
   providedIn: 'root',

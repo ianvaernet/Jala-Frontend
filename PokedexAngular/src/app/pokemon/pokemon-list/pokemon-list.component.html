@@ -1,0 +1,6 @@
+<div class="cards-container">
+  <app-pokemon-card
+    *ngFor="let pokemon of pokemons | async"
+    [pokemon]="pokemon"
+  ></app-pokemon-card>
+</div>

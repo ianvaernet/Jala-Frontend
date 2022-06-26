@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { forkJoin, map } from 'rxjs';
-import { ListPokemonsResult, PokemonFromApi } from './types';
+import { ListPokemonsResult } from './types';
 
 @Injectable({
   providedIn: 'root',
@@ -14,11 +14,15 @@ export class PokemonService {
     const backgroundColors = this.getPokemonBackgroundColors();
     const pokemons = forkJoin([pokemonsData, backgroundColors]).pipe(
       map(([pokemons, pokemonColors]) => {
-        return pokemons.results.map((pokemon, index) => ({
-          ...pokemon,
-          image: this.getPokemonImageUri(index + 1),
-          background: pokemonColors[(index + 1).toString()],
-        }));
+        return pokemons.results.map((pokemon) => {
+          const id = this.getIdFromUrl(pokemon.url);
+          return {
+            ...pokemon,
+            id,
+            image: this.getPokemonImageUri(id),
+            background: pokemonColors[id],
+          };
+        });
       })
     );
     return pokemons;
@@ -32,7 +36,7 @@ export class PokemonService {
     return pokemons;
   }
 
-  getPokemonImageUri(id: number) {
+  getPokemonImageUri(id: string) {
     const imageId = ('00' + id).slice(-3); // para 1 => 001
     return `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${imageId}.png`;
   }
@@ -43,5 +47,9 @@ export class PokemonService {
     );
 
     return pokemonColors;
+  }
+
+  getIdFromUrl(url: string) {
+    return url.split('/').slice(-2, -1)[0];
   }
 }

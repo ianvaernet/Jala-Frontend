@@ -1,8 +1,10 @@
 export type Pokemon = {
+  id: string;
   name: string;
   url: string;
   image: string;
   background: string;
 };
-export type PokemonFromApi = { name: string; url: string };
+
+type PokemonFromApi = { name: string; url: string };
 export type ListPokemonsResult = { results: PokemonFromApi[] };

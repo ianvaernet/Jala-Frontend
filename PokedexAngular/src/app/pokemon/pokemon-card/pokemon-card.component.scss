@@ -1,11 +1,21 @@
-$grey: #eaeaea;
+$light-grey: #eaeaea;
+$transparent-grey: rgb(234, 234, 234, 0.5);
 
 .card {
   padding: 25px 50px;
-  border: 1px solid $grey;
+  border: 1px solid $light-grey;
   border-radius: 15px;
   margin: 10px;
-  box-shadow: 3px 5px 5px $grey;
+  box-shadow: 3px 5px 5px $light-grey;
+
+  img {
+    background-color: $transparent-grey;
+  }
+
+  .id {
+    color: #fff;
+    margin: 5px;
+  }
 
   .title {
     font-family: "Segoe UI", sans-serif;
@@ -13,9 +23,10 @@ $grey: #eaeaea;
     font-weight: bold;
     color: #fff;
     text-transform: capitalize;
-    text-align: center;
+    margin: 10px 5px;
   }
-  .title.color-black {
+
+  .color-black {
     color: #000;
   }
 }

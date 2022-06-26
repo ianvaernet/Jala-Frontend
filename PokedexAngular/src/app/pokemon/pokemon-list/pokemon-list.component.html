@@ -1,11 +1,14 @@
 <section class="pokedex">
   <div class="search-bar">
-    <app-search-bar class="search-bar"></app-search-bar>
+    <app-search-bar
+      class="search-bar"
+      (searchChange)="onSearchChange($event.target.value)"
+    ></app-search-bar>
   </div>
 
   <div class="cards-container">
     <app-pokemon-card
-      *ngFor="let pokemon of pokemons | async"
+      *ngFor="let pokemon of pokemonsToDisplay"
       [pokemon]="pokemon"
     ></app-pokemon-card>
   </div>

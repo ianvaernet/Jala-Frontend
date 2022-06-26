@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { forkJoin, map } from 'rxjs';
-import { PokemonFromApi } from './types';
+import { ListPokemonsResult, PokemonFromApi } from './types';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,7 @@ export class PokemonService {
     const backgroundColors = this.getPokemonBackgroundColors();
     const pokemons = forkJoin([pokemonsData, backgroundColors]).pipe(
       map(([pokemons, pokemonColors]) => {
-        return pokemons.map((pokemon, index) => ({
+        return pokemons.results.map((pokemon, index) => ({
           ...pokemon,
           image: this.getPokemonImageUri(index + 1),
           background: pokemonColors[(index + 1).toString()],
@@ -25,7 +25,9 @@ export class PokemonService {
   }
 
   getPokemonsData() {
-    const pokemons = this.http.get<PokemonFromApi[]>('/assets/pokemons.json');
+    const pokemons = this.http.get<ListPokemonsResult>(
+      'https://pokeapi.co/api/v2/pokemon/?limit=50&offset=0'
+    );
 
     return pokemons;
   }

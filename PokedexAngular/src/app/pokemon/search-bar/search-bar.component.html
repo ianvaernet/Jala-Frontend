@@ -1,1 +1,5 @@
-<input class="search-input" placeholder="Search Pokemons" />
+<input
+  class="search-input"
+  placeholder="Search Pokemons"
+  (input)="searchChange.emit($event)"
+/>

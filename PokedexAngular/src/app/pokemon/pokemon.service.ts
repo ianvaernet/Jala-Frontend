@@ -7,10 +7,11 @@ import { ListPokemonsResult } from './types';
   providedIn: 'root',
 })
 export class PokemonService {
+  private API_URL = 'https://pokeapi.co/api/v2/pokemon';
   constructor(private http: HttpClient) {}
 
-  getPokemons() {
-    const pokemonsData = this.getPokemonsData();
+  getPokemons(limit?: number, offset?: number) {
+    const pokemonsData = this.getPokemonsData(limit, offset);
     const backgroundColors = this.getPokemonBackgroundColors();
     const pokemons = forkJoin([pokemonsData, backgroundColors]).pipe(
       map(([pokemons, pokemonColors]) => {
@@ -28,9 +29,9 @@ export class PokemonService {
     return pokemons;
   }
 
-  getPokemonsData() {
+  getPokemonsData(limit = 25, offset = 0) {
     const pokemons = this.http.get<ListPokemonsResult>(
-      'https://pokeapi.co/api/v2/pokemon/?limit=50&offset=0'
+      `${this.API_URL}/?limit=${limit}&offset=${offset}`
     );
 
     return pokemons;

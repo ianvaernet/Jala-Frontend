@@ -9,14 +9,21 @@ import { Pokemon } from '../types';
   styleUrls: ['./pokemon-list.component.scss'],
 })
 export class PokemonListComponent implements OnInit {
-  pokemons!: Pokemon[];
+  pokemons: Pokemon[] = [];
   pokemonsToDisplay!: Pokemon[];
+  limit = 50;
+  offset = 0;
 
   constructor(private pokemonService: PokemonService) {}
 
   async ngOnInit() {
-    this.pokemons = await lastValueFrom(this.pokemonService.getPokemons());
-    this.pokemonsToDisplay = this.pokemons;
+    this.pokemonService
+      .getPokemons(this.limit, this.offset)
+      .subscribe((pokemons) => {
+        this.pokemons = [...this.pokemons, ...pokemons];
+        this.pokemonsToDisplay = this.pokemons;
+      });
+    this.offset += this.limit;
   }
 
   onSearchChange(search: string) {

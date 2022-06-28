@@ -6,6 +6,7 @@ import { NotFoundComponent } from '../core/not-found/not-found.component';
 import { PokemonCardComponent } from './pokemon-card/pokemon-card.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     SearchBarComponent,
     NotFoundComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, FormsModule],
+  imports: [BrowserModule, HttpClientModule, FormsModule, InfiniteScrollModule],
   exports: [PokemonListComponent],
   providers: [],
 })

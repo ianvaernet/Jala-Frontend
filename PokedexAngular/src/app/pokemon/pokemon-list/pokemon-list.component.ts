@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { lastValueFrom, Observable } from 'rxjs';
 import { PokemonService } from '../pokemon.service';
 import { Pokemon } from '../types';
 
@@ -10,13 +9,17 @@ import { Pokemon } from '../types';
 })
 export class PokemonListComponent implements OnInit {
   pokemons: Pokemon[] = [];
-  pokemonsToDisplay!: Pokemon[];
+  pokemonsToDisplay: Pokemon[] = [];
   limit = 50;
   offset = 0;
 
   constructor(private pokemonService: PokemonService) {}
 
   async ngOnInit() {
+    this.getMorePokemons();
+  }
+
+  getMorePokemons() {
     this.pokemonService
       .getPokemons(this.limit, this.offset)
       .subscribe((pokemons) => {
@@ -30,5 +33,9 @@ export class PokemonListComponent implements OnInit {
     this.pokemonsToDisplay = search
       ? this.pokemons.filter((pokemon) => pokemon.name.includes(search))
       : this.pokemons;
+  }
+
+  onScrollDown() {
+    this.getMorePokemons();
   }
 }

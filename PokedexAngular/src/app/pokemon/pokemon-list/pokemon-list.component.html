@@ -1,4 +1,9 @@
-<section class="pokedex">
+<div
+  class="pokedex"
+  infiniteScroll
+  [infiniteScrollDistance]="1"
+  (scrolled)="onScrollDown()"
+>
   <div class="search-bar">
     <app-search-bar
       class="search-bar"
@@ -13,4 +18,4 @@
     ></app-pokemon-card>
     <app-not-found *ngIf="pokemonsToDisplay.length === 0"></app-not-found>
   </div>
-</section>
+</div>

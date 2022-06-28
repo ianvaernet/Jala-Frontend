@@ -1,5 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NotFoundComponent } from '../core/not-found/not-found.component';
 import { PokemonCardComponent } from './pokemon-card/pokemon-card.component';
@@ -13,7 +14,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     SearchBarComponent,
     NotFoundComponent,
   ],
-  imports: [BrowserModule, HttpClientModule],
+  imports: [BrowserModule, HttpClientModule, FormsModule],
   exports: [PokemonListComponent],
   providers: [],
 })

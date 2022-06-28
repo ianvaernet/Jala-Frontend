@@ -1,7 +1,9 @@
 <div>
   <input
+    type="text"
     class="search-input"
     placeholder="Search Pokemons"
-    (input)="searchChange.emit($event)"
+    [ngModel]="search"
+    (ngModelChange)="searchChange.emit($event)"
   />
 </div>

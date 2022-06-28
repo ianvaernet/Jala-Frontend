@@ -27,8 +27,8 @@ export class PokemonListComponent implements OnInit {
   }
 
   onSearchChange(search: string) {
-    this.pokemonsToDisplay = this.pokemons.filter(
-      (pokemon) => !search || pokemon.name.includes(search)
-    );
+    this.pokemonsToDisplay = search
+      ? this.pokemons.filter((pokemon) => pokemon.name.includes(search))
+      : this.pokemons;
   }
 }

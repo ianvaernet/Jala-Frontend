@@ -10,6 +10,7 @@ import { Pokemon } from '../types';
 export class PokemonListComponent implements OnInit {
   pokemons: Pokemon[] = [];
   pokemonsToDisplay: Pokemon[] = [];
+  search = '';
   limit = 50;
   offset = 0;
 
@@ -30,12 +31,15 @@ export class PokemonListComponent implements OnInit {
   }
 
   onSearchChange(search: string) {
+    this.search = search;
     this.pokemonsToDisplay = search
       ? this.pokemons.filter((pokemon) => pokemon.name.includes(search))
       : this.pokemons;
   }
 
   onScrollDown() {
-    this.getMorePokemons();
+    if (!this.search) {
+      this.getMorePokemons();
+    }
   }
 }

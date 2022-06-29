@@ -1,7 +1,10 @@
-.search-bar {
+.list-header {
   margin-top: 15px;
   margin-bottom: 5px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
 }
 
 .cards-container {

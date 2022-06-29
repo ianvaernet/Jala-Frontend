@@ -11,6 +11,7 @@ export class PokemonListComponent implements OnInit {
   pokemons: Pokemon[] = [];
   pokemonsToDisplay: Pokemon[] = [];
   search = '';
+  selectedGeneration = '0';
   limit = 50;
   offset = 0;
 
@@ -48,5 +49,9 @@ export class PokemonListComponent implements OnInit {
     if (!this.search) {
       this.getMorePokemons();
     }
+  }
+
+  onGenerationChange(generation: string) {
+    console.log(generation);
   }
 }

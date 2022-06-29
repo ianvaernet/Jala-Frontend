@@ -4,12 +4,16 @@
   [infiniteScrollDistance]="0"
   (scrolled)="onScrollDown()"
 >
-  <div class="search-bar">
+  <div class="list-header">
     <app-search-bar
       class="search-bar"
       [search]="search"
       (searchChange)="onSearchChange($event)"
     ></app-search-bar>
+    <app-generation-filter
+      [selectedGeneration]="selectedGeneration"
+      (generationChange)="onGenerationChange($event)"
+    ></app-generation-filter>
   </div>
 
   <div class="cards-container">

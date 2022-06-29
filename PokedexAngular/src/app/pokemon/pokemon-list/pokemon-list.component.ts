@@ -24,7 +24,10 @@ export class PokemonListComponent implements OnInit {
     this.pokemonService
       .getPokemons(this.limit, this.offset)
       .subscribe((pokemons) => {
-        this.pokemons = [...this.pokemons, ...pokemons];
+        this.pokemons = this.orderPokemonsByName([
+          ...this.pokemons,
+          ...pokemons,
+        ]);
         this.pokemonsToDisplay = this.pokemons;
       });
     this.offset += this.limit;
@@ -35,6 +38,10 @@ export class PokemonListComponent implements OnInit {
     this.pokemonsToDisplay = search
       ? this.pokemons.filter((pokemon) => pokemon.name.includes(search))
       : this.pokemons;
+  }
+
+  orderPokemonsByName(pokemons: Pokemon[]) {
+    return pokemons.sort((a, b) => a.name.localeCompare(b.name));
   }
 
   onScrollDown() {

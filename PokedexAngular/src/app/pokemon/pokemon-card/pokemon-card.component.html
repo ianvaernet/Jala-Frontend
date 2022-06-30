@@ -1,4 +1,8 @@
-<div class="card" [ngStyle]="{ 'background-color': pokemon.background }">
+<div
+  class="card"
+  [ngStyle]="{ 'background-color': pokemon.background }"
+  (click)="goToPokemonDetails()"
+>
   <img src="{{ pokemon.image }}" alt="{{ pokemon.name }}" />
   <p
     class="id"

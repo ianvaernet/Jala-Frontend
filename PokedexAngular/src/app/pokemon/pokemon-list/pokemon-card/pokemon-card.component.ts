@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Pokemon } from '../types';
+import { Pokemon } from '../../types';
 
 @Component({
   selector: 'app-pokemon-card',

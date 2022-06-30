@@ -1,7 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { forkJoin, map } from 'rxjs';
-import { ListPokemonsByGenerationResult, ListPokemonsResult } from './types';
+import {
+  ListPokemonsByGenerationResult,
+  ListPokemonsResult,
+  PokemonDetails,
+} from './types';
 
 @Injectable({
   providedIn: 'root',
@@ -66,5 +70,13 @@ export class PokemonService {
 
   getIdFromUrl(url: string) {
     return url.split('/').slice(-2, -1)[0];
+  }
+
+  getPokemon(id: string) {
+    const pokemon = this.http.get<PokemonDetails>(
+      `${this.API_URL}/pokemon/${id}`
+    );
+
+    return pokemon;
   }
 }

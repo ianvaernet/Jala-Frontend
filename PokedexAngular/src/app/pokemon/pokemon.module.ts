@@ -8,6 +8,7 @@ import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { GenerationFilterComponent } from './generation-filter/generation-filter.component';
+import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { GenerationFilterComponent } from './generation-filter/generation-filter
     SearchBarComponent,
     NotFoundComponent,
     GenerationFilterComponent,
+    PokemonDetailsComponent,
   ],
   imports: [BrowserModule, HttpClientModule, FormsModule, InfiniteScrollModule],
   exports: [PokemonListComponent],

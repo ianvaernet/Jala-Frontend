@@ -9,6 +9,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { GenerationFilterComponent } from './generation-filter/generation-filter.component';
 import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.component';
+import { PokemonRoutingModule } from './pokemon-routing.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.compo
     PokemonDetailsComponent,
   ],
   imports: [BrowserModule, HttpClientModule, FormsModule, InfiniteScrollModule],
-  exports: [PokemonListComponent],
+  exports: [PokemonRoutingModule],
   providers: [],
 })
 export class PokemonModule {}

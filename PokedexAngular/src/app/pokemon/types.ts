@@ -8,3 +8,6 @@ export type Pokemon = {
 
 type PokemonFromApi = { name: string; url: string };
 export type ListPokemonsResult = { results: PokemonFromApi[] };
+export type ListPokemonsByGenerationResult = {
+  pokemon_species: PokemonFromApi[];
+};

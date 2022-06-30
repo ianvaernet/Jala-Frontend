@@ -23,7 +23,7 @@ export class PokemonListComponent implements OnInit {
 
   getMorePokemons() {
     this.pokemonService
-      .getPokemons(this.limit, this.offset)
+      .getPokemons(this.limit, this.offset, parseInt(this.selectedGeneration))
       .subscribe((pokemons) => {
         this.pokemons = this.orderPokemonsByName([
           ...this.pokemons,
@@ -41,17 +41,19 @@ export class PokemonListComponent implements OnInit {
       : this.pokemons;
   }
 
+  onGenerationChange(generation: string) {
+    this.selectedGeneration = generation;
+    this.pokemons = [];
+    this.getMorePokemons();
+  }
+
   orderPokemonsByName(pokemons: Pokemon[]) {
     return pokemons.sort((a, b) => a.name.localeCompare(b.name));
   }
 
   onScrollDown() {
-    if (!this.search) {
+    if (!this.search && !parseInt(this.selectedGeneration)) {
       this.getMorePokemons();
     }
-  }
-
-  onGenerationChange(generation: string) {
-    console.log(generation);
   }
 }

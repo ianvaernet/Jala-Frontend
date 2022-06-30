@@ -1,21 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { forkJoin, map } from 'rxjs';
-import { ListPokemonsResult } from './types';
+import { ListPokemonsByGenerationResult, ListPokemonsResult } from './types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PokemonService {
-  private API_URL = 'https://pokeapi.co/api/v2/pokemon';
+  private API_URL = 'https://pokeapi.co/api/v2';
   constructor(private http: HttpClient) {}
 
-  getPokemons(limit?: number, offset?: number) {
-    const pokemonsData = this.getPokemonsData(limit, offset);
+  getPokemons(limit?: number, offset?: number, generation?: number) {
+    const pokemonsData = generation
+      ? this.getPokemonsFromGeneration(generation)
+      : this.getPokemonsData(limit, offset);
     const backgroundColors = this.getPokemonBackgroundColors();
     const pokemons = forkJoin([pokemonsData, backgroundColors]).pipe(
       map(([pokemons, pokemonColors]) => {
-        return pokemons.results.map((pokemon) => {
+        return pokemons.map((pokemon) => {
           const id = this.getIdFromUrl(pokemon.url);
           return {
             ...pokemon,
@@ -29,10 +31,22 @@ export class PokemonService {
     return pokemons;
   }
 
+  getPokemonsFromGeneration(generation: number) {
+    const pokemons = this.http
+      .get<ListPokemonsByGenerationResult>(
+        `${this.API_URL}/generation/${generation}`
+      )
+      .pipe(map((response) => response.pokemon_species));
+
+    return pokemons;
+  }
+
   getPokemonsData(limit = 25, offset = 0) {
-    const pokemons = this.http.get<ListPokemonsResult>(
-      `${this.API_URL}/?limit=${limit}&offset=${offset}`
-    );
+    const pokemons = this.http
+      .get<ListPokemonsResult>(
+        `${this.API_URL}/pokemon?limit=${limit}&offset=${offset}`
+      )
+      .pipe(map((response) => response.results));
 
     return pokemons;
   }

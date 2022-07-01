@@ -44,6 +44,7 @@ export class PokemonListComponent implements OnInit {
   onGenerationChange(generation: string) {
     this.selectedGeneration = generation;
     this.pokemons = [];
+    this.offset = 0;
     this.getMorePokemons();
   }
 

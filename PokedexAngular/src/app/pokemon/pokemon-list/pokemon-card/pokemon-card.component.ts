@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Pokemon } from '../../types';
+import { ListablePokemon } from '../../types';
 
 @Component({
   selector: 'app-pokemon-card',
@@ -8,7 +8,7 @@ import { Pokemon } from '../../types';
   styleUrls: ['./pokemon-card.component.scss'],
 })
 export class PokemonCardComponent {
-  @Input() pokemon!: Pokemon;
+  @Input() pokemon!: ListablePokemon;
   constructor(private router: Router) {}
 
   goToPokemonDetails() {

@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { forkJoin, map } from 'rxjs';
+import { forkJoin, map, Observable } from 'rxjs';
 import {
   ListPokemonsByGenerationResult,
   ListPokemonsResult,
+  Pokemon,
   PokemonDetails,
+  PokemonSpecie,
 } from './types';
 
 @Injectable({
@@ -72,11 +74,36 @@ export class PokemonService {
     return url.split('/').slice(-2, -1)[0];
   }
 
-  getPokemon(id: string) {
-    const pokemon = this.http.get<PokemonDetails>(
-      `${this.API_URL}/pokemon/${id}`
+  getPokemon(id: string): Observable<Pokemon> {
+    const pokemonDetails = this.getPokemonDetails(id);
+    const pokemonSpecie = this.getPokemonSpecie(id);
+    const pokemon = forkJoin([pokemonDetails, pokemonSpecie]).pipe(
+      map(([pokemonDetails, pokemonSpecie]) => ({
+        id: pokemonDetails.id,
+        name: pokemonDetails.name,
+        type: pokemonSpecie.egg_groups[0].name,
+        image: this.getPokemonImageUri(id),
+        description: this.getPokemonDescription(pokemonSpecie),
+      }))
     );
-
     return pokemon;
+  }
+
+  getPokemonDetails(id: string) {
+    return this.http.get<PokemonDetails>(`${this.API_URL}/pokemon/${id}`);
+  }
+  getPokemonSpecie(id: string) {
+    return this.http.get<PokemonSpecie>(
+      `${this.API_URL}/pokemon-species/${id}`
+    );
+  }
+
+  getPokemonDescription(pokemonSpecie: PokemonSpecie) {
+    const uniqueDescriptions = new Set(
+      pokemonSpecie.flavor_text_entries
+        .filter((entry) => entry.language.name === 'es')
+        .map((entry) => entry?.flavor_text)
+    );
+    return Array.from(uniqueDescriptions).join(' ');
   }
 }

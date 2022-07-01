@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
-import { Pokemon } from '../types';
+import { ListablePokemon } from '../types';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -8,8 +8,8 @@ import { Pokemon } from '../types';
   styleUrls: ['./pokemon-list.component.scss'],
 })
 export class PokemonListComponent implements OnInit {
-  pokemons: Pokemon[] = [];
-  pokemonsToDisplay: Pokemon[] = [];
+  pokemons: ListablePokemon[] = [];
+  pokemonsToDisplay: ListablePokemon[] = [];
   search = '';
   selectedGeneration = '0';
   limit = 50;
@@ -48,7 +48,7 @@ export class PokemonListComponent implements OnInit {
     this.getMorePokemons();
   }
 
-  orderPokemonsByName(pokemons: Pokemon[]) {
+  orderPokemonsByName(pokemons: ListablePokemon[]) {
     return pokemons.sort((a, b) => a.name.localeCompare(b.name));
   }
 

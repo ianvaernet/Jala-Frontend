@@ -1,4 +1,4 @@
-export type Pokemon = {
+export type ListablePokemon = {
   id: string;
   name: string;
   url: string;
@@ -24,6 +24,28 @@ export type PokemonDetails = {
   sprites: unknown;
   stats: unknown[];
   weight: number;
+};
+
+export type PokemonSpecie = {
+  base_happiness: number;
+  capture_rate: number;
+  color: { name: string; url: string };
+  egg_groups: { name: string; url: string }[];
+  evolution_chain: unknown;
+  evolves_from_species: unknown;
+  flavor_text_entries: {
+    flavor_text: string;
+    language: { name: string };
+    version: unknown;
+  }[];
+};
+
+export type Pokemon = {
+  id: number;
+  name: string;
+  type: string;
+  image: string;
+  description?: string;
 };
 
 type PokemonFromApi = { name: string; url: string };

@@ -2,7 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonService } from '../pokemon.service';
-import { PokemonDetails } from '../types';
+import { Pokemon } from '../types';
 
 @Component({
   selector: 'app-pokemon-details',
@@ -11,7 +11,7 @@ import { PokemonDetails } from '../types';
 })
 export class PokemonDetailsComponent implements OnInit {
   id: string = '1';
-  pokemon?: PokemonDetails;
+  pokemon!: Pokemon;
 
   constructor(
     private location: Location,

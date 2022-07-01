@@ -1,0 +1,42 @@
+.container {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "main-left main-right"
+    "footer footer";
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+}
+
+header {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px;
+
+  .pokemon-name {
+    text-transform: capitalize;
+  }
+}
+
+main {
+  .main-left {
+    grid-area: main-left;
+    width: 100%;
+
+    .pokemon-image {
+      height: 100%;
+      display: block;
+      margin-left: auto;
+    }
+  }
+  .main-right {
+    grid-area: main-left;
+    width: 100%;
+  }
+}
+
+footer {
+  grid-area: footer;
+}

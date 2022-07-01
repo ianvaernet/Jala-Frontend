@@ -1,2 +1,16 @@
-<p>pokemon-details!</p>
-<button (click)="goBack()">Go back</button>
+<div class="container">
+  <header>
+    <button (click)="goBack()">Go back</button>
+    <h1 class="pokemon-name">{{ pokemon.name }} #{{ pokemon.id }}</h1>
+    <div></div>
+  </header>
+  <main>
+    <div class="main-left">
+      <img src="{{ pokemon.image }}" class="pokemon-image" />
+    </div>
+    <div class="main-right">
+      <p>{{ pokemon.description }}</p>
+      <p>Type: {{ pokemon.type }}</p>
+    </div>
+  </main>
+</div>

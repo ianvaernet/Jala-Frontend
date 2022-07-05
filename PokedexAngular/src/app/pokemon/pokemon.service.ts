@@ -84,6 +84,10 @@ export class PokemonService {
         type: pokemonSpecie.egg_groups[0].name,
         image: this.getPokemonImageUri(id),
         description: this.getPokemonDescription(pokemonSpecie),
+        stats: pokemonDetails.stats.map((stat) => ({
+          name: stat.stat.name,
+          value: stat.base_stat,
+        })),
       }))
     );
     return pokemon;

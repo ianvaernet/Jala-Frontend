@@ -22,7 +22,11 @@ export type PokemonDetails = {
   past_types: unknown[];
   species: unknown;
   sprites: unknown;
-  stats: unknown[];
+  stats: {
+    base_stat: number;
+    effort: number;
+    stat: { name: string };
+  }[];
   weight: number;
 };
 
@@ -46,6 +50,7 @@ export type Pokemon = {
   type: string;
   image: string;
   description?: string;
+  stats: { name: string; value: number }[];
 };
 
 type PokemonFromApi = { name: string; url: string };

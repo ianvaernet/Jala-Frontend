@@ -10,6 +10,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { GenerationFilterComponent } from './pokemon-list/generation-filter/generation-filter.component';
 import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.component';
 import { PokemonRoutingModule } from './pokemon-routing.module';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,13 @@ import { PokemonRoutingModule } from './pokemon-routing.module';
     GenerationFilterComponent,
     PokemonDetailsComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, FormsModule, InfiniteScrollModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    InfiniteScrollModule,
+    MatProgressBarModule,
+  ],
   exports: [PokemonRoutingModule],
   providers: [],
 })

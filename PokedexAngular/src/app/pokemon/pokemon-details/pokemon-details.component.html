@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="pokemon">
   <header>
     <button (click)="goBack()">Go back</button>
     <h1 class="pokemon-name">{{ pokemon.name }} #{{ pokemon.id }}</h1>
@@ -11,6 +11,16 @@
     <div class="main-right">
       <p>{{ pokemon.description }}</p>
       <p>Type: {{ pokemon.type }}</p>
+    </div>
+    <div class="stats">
+      <h2>Stats</h2>
+      <div class="stat-container" *ngFor="let stat of pokemon.stats">
+        <label class="stat-name">{{ stat.name }}</label>
+        <mat-progress-bar
+          mode="determinate"
+          [value]="stat.value / 1.5"
+        ></mat-progress-bar>
+      </div>
     </div>
   </main>
 </div>

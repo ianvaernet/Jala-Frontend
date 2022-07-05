@@ -88,6 +88,7 @@ export class PokemonService {
           name: stat.stat.name,
           value: stat.base_stat,
         })),
+        color: pokemonSpecie.color.name,
       }))
     );
     return pokemon;

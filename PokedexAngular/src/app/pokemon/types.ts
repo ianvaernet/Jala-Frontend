@@ -51,6 +51,7 @@ export type Pokemon = {
   image: string;
   description?: string;
   stats: { name: string; value: number }[];
+  color: string;
 };
 
 type PokemonFromApi = { name: string; url: string };

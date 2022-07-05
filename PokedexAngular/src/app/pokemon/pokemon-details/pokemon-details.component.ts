@@ -26,6 +26,14 @@ export class PokemonDetailsComponent implements OnInit {
     });
   }
 
+  getPokemonNameColor() {
+    if (this.pokemon.color === 'white' || this.pokemon.color === 'yellow') {
+      return 'black';
+    } else {
+      return 'white';
+    }
+  }
+
   goBack(): void {
     this.location.back();
   }

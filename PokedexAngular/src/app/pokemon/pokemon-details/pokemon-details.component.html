@@ -1,18 +1,24 @@
 <div class="container" *ngIf="pokemon">
-  <header>
+  <div class="header" [ngStyle]="{ 'background-color': pokemon.color }">
     <button (click)="goBack()">Go back</button>
-    <h1 class="pokemon-name">{{ pokemon.name }} #{{ pokemon.id }}</h1>
+    <h1 class="pokemon-name" [ngStyle]="{ color: getPokemonNameColor() }">
+      {{ pokemon.name }} #{{ pokemon.id }}
+    </h1>
     <div></div>
-  </header>
-  <main>
-    <div class="main-left">
-      <img src="{{ pokemon.image }}" class="pokemon-image" />
+  </div>
+
+  <div class="content">
+    <div class="pokemon">
+      <div>
+        <img src="{{ pokemon.image }}" class="pokemon-image" />
+      </div>
+      <div class="pokemon-data">
+        <p>{{ pokemon.description }}</p>
+        <label class="pokemon-type-title">Type:</label>
+        <label class="pokemon-type">{{ pokemon.type }}</label>
+      </div>
     </div>
-    <div class="main-right">
-      <p>{{ pokemon.description }}</p>
-      <p>Type: {{ pokemon.type }}</p>
-    </div>
-    <div class="stats">
+    <div class="pokemon-stats">
       <h2>Stats</h2>
       <div class="stat-container" *ngFor="let stat of pokemon.stats">
         <label class="stat-name">{{ stat.name }}</label>
@@ -22,5 +28,5 @@
         ></mat-progress-bar>
       </div>
     </div>
-  </main>
+  </div>
 </div>

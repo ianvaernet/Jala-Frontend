@@ -1,6 +1,12 @@
 <div class="container" *ngIf="pokemon">
   <div class="header" [ngStyle]="{ 'background-color': pokemon.color }">
-    <button (click)="goBack()">Go back</button>
+    <button
+      class="go-back-button"
+      (click)="goBack()"
+      [ngStyle]="{ color: getPokemonNameColor(), 'border-color': getPokemonNameColor() }"
+    >
+      <fa-icon [icon]="faAnglesLeft"></fa-icon> Go back
+    </button>
     <h1 class="pokemon-name" [ngStyle]="{ color: getPokemonNameColor() }">
       {{ pokemon.name }} #{{ pokemon.id }}
     </h1>

@@ -11,6 +11,7 @@ import { GenerationFilterComponent } from './pokemon-list/generation-filter/gene
 import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.component';
 import { PokemonRoutingModule } from './pokemon-routing.module';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     FormsModule,
     InfiniteScrollModule,
     MatProgressBarModule,
+    FontAwesomeModule
   ],
   exports: [PokemonRoutingModule],
   providers: [],

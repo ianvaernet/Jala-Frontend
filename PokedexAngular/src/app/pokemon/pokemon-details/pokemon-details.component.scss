@@ -2,12 +2,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   padding: 15px 30px;
+
+  .go-back-button {
+    padding: 5px 10px;
+    background-color: transparent;
+    border-radius: 7px;
+  }
 
   .pokemon-name {
     text-transform: capitalize;
     font-weight: bold;
+    margin: 0;
   }
 }
 
@@ -39,7 +46,6 @@
       }
 
       .pokemon-type {
-        // display: block;
         text-transform: uppercase;
         padding: 5px 15px;
         background-color: #ccc;
@@ -52,7 +58,7 @@
   .pokemon-stats {
     width: 100%;
     max-width: 900px;
-    margin-top: 50px;
+    margin: 50px 0px;
 
     .stat-container {
       margin-top: 10px;

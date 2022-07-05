@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonService } from '../pokemon.service';
 import { Pokemon } from '../types';
+import { faAnglesLeft } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-pokemon-details',
@@ -12,6 +14,7 @@ import { Pokemon } from '../types';
 export class PokemonDetailsComponent implements OnInit {
   id: string = '1';
   pokemon!: Pokemon;
+  faAnglesLeft = faAnglesLeft;
 
   constructor(
     private location: Location,

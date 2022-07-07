@@ -7,12 +7,11 @@ import { PokemonCardComponent } from './pokemon-list/pokemon-card/pokemon-card.c
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { SearchBarComponent } from './pokemon-list/search-bar/search-bar.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { GenerationFilterComponent } from './pokemon-list/generation-filter/generation-filter.component';
 import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.component';
 import { PokemonRoutingModule } from './pokemon-routing.module';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { OrderByComponent } from '../core/order-by/order-by.component';
+import { SelectComponent } from '../core/select/select.component';
 
 @NgModule({
   declarations: [
@@ -20,9 +19,8 @@ import { OrderByComponent } from '../core/order-by/order-by.component';
     PokemonListComponent,
     SearchBarComponent,
     NotFoundComponent,
-    GenerationFilterComponent,
     PokemonDetailsComponent,
-    OrderByComponent,
+    SelectComponent,
   ],
   imports: [
     BrowserModule,

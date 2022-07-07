@@ -11,11 +11,22 @@ export class PokemonListComponent implements OnInit {
   pokemons: ListablePokemon[] = [];
   pokemonsToDisplay: ListablePokemon[] = [];
   search = '';
-  selectedGeneration = '0';
-  orderOptions = Object.values(Order);
+  generation = '0';
   order: string = Order.Id;
   limit = 50;
   offset = 0;
+  orderOptions = Object.values(Order).map((order) => ({
+    name: order,
+    value: order,
+  }));
+  generationOptions = [
+    { name: 'All', value: '0' },
+    { name: 'Generation 1', value: '1' },
+    { name: 'Generation 2', value: '2' },
+    { name: 'Generation 3', value: '3' },
+    { name: 'Generation 4', value: '4' },
+    { name: 'Generation 5', value: '5' },
+  ];
 
   constructor(private pokemonService: PokemonService) {}
 
@@ -25,7 +36,7 @@ export class PokemonListComponent implements OnInit {
 
   getMorePokemons() {
     this.pokemonService
-      .getPokemons(this.limit, this.offset, parseInt(this.selectedGeneration))
+      .getPokemons(this.limit, this.offset, parseInt(this.generation))
       .subscribe((pokemons) => {
         if (this.order === Order.Name) {
           this.pokemons = this.orderPokemonsByName([
@@ -48,7 +59,7 @@ export class PokemonListComponent implements OnInit {
   }
 
   onGenerationChange(generation: string) {
-    this.selectedGeneration = generation;
+    this.generation = generation;
     this.pokemons = [];
     this.offset = 0;
     this.getMorePokemons();
@@ -59,7 +70,7 @@ export class PokemonListComponent implements OnInit {
   }
 
   onScrollDown() {
-    if (!this.search && !parseInt(this.selectedGeneration)) {
+    if (!this.search && !parseInt(this.generation)) {
       this.getMorePokemons();
     }
   }

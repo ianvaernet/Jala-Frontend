@@ -10,15 +10,18 @@
       [search]="search"
       (searchChange)="onSearchChange($event)"
     ></app-search-bar>
-    <app-order-by
-      [orderOptions]="orderOptions"
-      [currentOrder]="order"
-      (orderChange)="onOrderChange($event)"
-    ></app-order-by>
-    <app-generation-filter
-      [selectedGeneration]="selectedGeneration"
-      (generationChange)="onGenerationChange($event)"
-    ></app-generation-filter>
+    <app-select
+      label="Order by"
+      [options]="orderOptions"
+      [selectedOption]="order"
+      (selectChange)="onOrderChange($event)"
+    ></app-select>
+    <app-select
+      label="Show"
+      [options]="generationOptions"
+      [selectedOption]="generation"
+      (selectChange)="onGenerationChange($event)"
+    ></app-select>
   </div>
 
   <div class="cards-container">

@@ -10,6 +10,11 @@
       [search]="search"
       (searchChange)="onSearchChange($event)"
     ></app-search-bar>
+    <app-order-by
+      [orderOptions]="orderOptions"
+      [currentOrder]="order"
+      (orderChange)="onOrderChange($event)"
+    ></app-order-by>
     <app-generation-filter
       [selectedGeneration]="selectedGeneration"
       (generationChange)="onGenerationChange($event)"

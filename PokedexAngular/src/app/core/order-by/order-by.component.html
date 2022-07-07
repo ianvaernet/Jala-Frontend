@@ -1,0 +1,8 @@
+<div>
+  <label>Order by </label>
+  <select [ngModel]="currentOrder" (ngModelChange)="orderChange.emit($event)">
+    <option *ngFor="let option of orderOptions" [value]="option">
+      {{ option }}
+    </option>
+  </select>
+</div>

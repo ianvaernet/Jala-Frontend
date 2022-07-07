@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
-import { ListablePokemon } from '../types';
+import { ListablePokemon, Order } from '../types';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -12,6 +12,8 @@ export class PokemonListComponent implements OnInit {
   pokemonsToDisplay: ListablePokemon[] = [];
   search = '';
   selectedGeneration = '0';
+  orderOptions = Object.values(Order);
+  order: string = Order.Id;
   limit = 50;
   offset = 0;
 
@@ -25,10 +27,14 @@ export class PokemonListComponent implements OnInit {
     this.pokemonService
       .getPokemons(this.limit, this.offset, parseInt(this.selectedGeneration))
       .subscribe((pokemons) => {
-        this.pokemons = this.orderPokemonsByName([
-          ...this.pokemons,
-          ...pokemons,
-        ]);
+        if (this.order === Order.Name) {
+          this.pokemons = this.orderPokemonsByName([
+            ...this.pokemons,
+            ...pokemons,
+          ]);
+        } else {
+          this.pokemons = [...this.pokemons, ...pokemons];
+        }
         this.pokemonsToDisplay = this.pokemons;
       });
     this.offset += this.limit;
@@ -56,5 +62,12 @@ export class PokemonListComponent implements OnInit {
     if (!this.search && !parseInt(this.selectedGeneration)) {
       this.getMorePokemons();
     }
+  }
+
+  onOrderChange(order: string) {
+    this.order = order;
+    this.pokemons = [];
+    this.offset = 0;
+    this.getMorePokemons();
   }
 }

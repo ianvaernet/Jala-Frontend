@@ -12,6 +12,7 @@ import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.compo
 import { PokemonRoutingModule } from './pokemon-routing.module';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { OrderByComponent } from '../core/order-by/order-by.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     NotFoundComponent,
     GenerationFilterComponent,
     PokemonDetailsComponent,
+    OrderByComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     InfiniteScrollModule,
     MatProgressBarModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   exports: [PokemonRoutingModule],
   providers: [],

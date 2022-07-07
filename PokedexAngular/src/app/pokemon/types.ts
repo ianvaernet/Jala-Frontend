@@ -61,3 +61,8 @@ export type ListPokemonsResult = { results: PokemonFromApi[] };
 export type ListPokemonsByGenerationResult = {
   pokemon_species: PokemonFromApi[];
 };
+
+export enum Order {
+  Id = 'id',
+  Name = 'name',
+}

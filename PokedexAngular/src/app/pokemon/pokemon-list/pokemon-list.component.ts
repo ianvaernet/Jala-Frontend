@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { PokemonService } from '../pokemon.service';
 import { ListablePokemon, Order } from '../types';
 
@@ -28,10 +29,15 @@ export class PokemonListComponent implements OnInit {
     { name: 'Generation 5', value: '5' },
   ];
 
-  constructor(private pokemonService: PokemonService) {}
+  constructor(
+    private pokemonService: PokemonService,
+    private route: ActivatedRoute
+  ) {}
 
   async ngOnInit() {
-    this.getMorePokemons();
+    this.pokemons = this.route.snapshot.data['pokemons'];
+    this.pokemonsToDisplay = this.pokemons;
+    this.offset += this.limit;
   }
 
   getMorePokemons() {

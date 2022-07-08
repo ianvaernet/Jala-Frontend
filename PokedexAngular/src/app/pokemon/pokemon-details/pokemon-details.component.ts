@@ -1,10 +1,8 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PokemonService } from '../pokemon.service';
 import { Pokemon } from '../types';
 import { faAnglesLeft } from '@fortawesome/free-solid-svg-icons';
-
 
 @Component({
   selector: 'app-pokemon-details',
@@ -16,17 +14,11 @@ export class PokemonDetailsComponent implements OnInit {
   pokemon!: Pokemon;
   faAnglesLeft = faAnglesLeft;
 
-  constructor(
-    private location: Location,
-    private route: ActivatedRoute,
-    private pokemonService: PokemonService
-  ) {}
+  constructor(private location: Location, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id') || '1';
-    this.pokemonService.getPokemon(this.id).subscribe((pokemon) => {
-      this.pokemon = pokemon;
-    });
+    this.id = this.route.snapshot.paramMap.get('id')!;
+    this.pokemon = this.route.snapshot.data['pokemon'];
   }
 
   getPokemonNameColor() {

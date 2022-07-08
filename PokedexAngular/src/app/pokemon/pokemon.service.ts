@@ -47,7 +47,7 @@ export class PokemonService {
     return pokemons;
   }
 
-  getPokemonsData(limit = 25, offset = 0) {
+  getPokemonsData(limit = 50, offset = 0) {
     const pokemons = this.http
       .get<ListPokemonsResult>(
         `${this.API_URL}/pokemon?limit=${limit}&offset=${offset}`

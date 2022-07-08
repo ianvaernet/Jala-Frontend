@@ -4,4 +4,19 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  button {
+    margin: 0px 20px;
+    padding: 7px 15px;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 5px;
+  }
+
+  button.active {
+    background-color: #555;
+    border-color: #555;
+  }
 }

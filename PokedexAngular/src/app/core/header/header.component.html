@@ -1,4 +1,11 @@
 <header>
-  <button routerLink="">Home</button>
-  <button routerLink="/pokedex">Pokedex</button>
+  <button [ngClass]="isRouteActive('/') ? 'active' : 'enabled'" routerLink="">
+    Home
+  </button>
+  <button
+    [ngClass]="isRouteActive('/pokedex') ? 'active' : 'enabled'"
+    routerLink="/pokedex"
+  >
+    Pokedex
+  </button>
 </header>

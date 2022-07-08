@@ -81,7 +81,8 @@ export class PokemonService {
       map(([pokemonDetails, pokemonSpecie]) => ({
         id: pokemonDetails.id,
         name: pokemonDetails.name,
-        type: pokemonSpecie.egg_groups[0].name,
+        types: pokemonDetails.types.map((type) => type.type.name),
+        specie: pokemonSpecie.egg_groups[0].name,
         image: this.getPokemonImageUri(id),
         description: this.getPokemonDescription(pokemonSpecie),
         stats: pokemonDetails.stats.map((stat) => ({

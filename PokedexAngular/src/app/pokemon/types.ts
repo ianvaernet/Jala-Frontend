@@ -27,6 +27,7 @@ export type PokemonDetails = {
     effort: number;
     stat: { name: string };
   }[];
+  types: { type: { name: string } }[];
   weight: number;
 };
 
@@ -47,7 +48,8 @@ export type PokemonSpecie = {
 export type Pokemon = {
   id: number;
   name: string;
-  type: string;
+  types: string[];
+  specie: string;
   image: string;
   description?: string;
   stats: { name: string; value: number }[];

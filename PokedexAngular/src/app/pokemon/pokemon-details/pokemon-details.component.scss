@@ -42,16 +42,36 @@
       max-width: 500px;
       text-align: justify;
 
-      .pokemon-type-title {
-        font-weight: bold;
+      .pokemon-types {
+        margin-top: 15px;
+
+        .pokemon-type-title {
+          font-weight: bold;
+        }
+
+        .pokemon-type-name {
+          text-transform: uppercase;
+          padding: 5px 15px;
+          background-color: #ccc;
+          border-radius: 10px;
+          margin-left: 10px;
+        }
       }
 
-      .pokemon-type {
-        text-transform: uppercase;
-        padding: 5px 15px;
-        background-color: #ccc;
-        border-radius: 10px;
-        margin-left: 10px;
+      .pokemon-specie {
+        margin-top: 20px;
+
+        .pokemon-specie-title {
+          font-weight: bold;
+        }
+
+        .pokemon-specie-name {
+          text-transform: uppercase;
+          padding: 5px 15px;
+          background-color: #ccc;
+          border-radius: 10px;
+          margin-left: 10px;
+        }
       }
     }
   }

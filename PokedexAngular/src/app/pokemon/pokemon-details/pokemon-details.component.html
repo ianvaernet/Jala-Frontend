@@ -3,7 +3,10 @@
     <button
       class="go-back-button"
       (click)="goBack()"
-      [ngStyle]="{ color: getPokemonNameColor(), 'border-color': getPokemonNameColor() }"
+      [ngStyle]="{
+        color: getPokemonNameColor(),
+        'border-color': getPokemonNameColor()
+      }"
     >
       <fa-icon [icon]="faAnglesLeft"></fa-icon> Go back
     </button>
@@ -20,8 +23,16 @@
       </div>
       <div class="pokemon-data">
         <p>{{ pokemon.description }}</p>
-        <label class="pokemon-type-title">Type:</label>
-        <label class="pokemon-type">{{ pokemon.type }}</label>
+        <div class="pokemon-types">
+          <label class="pokemon-type-title">Types:</label>
+          <label *ngFor="let type of pokemon.types" class="pokemon-type-name">
+            {{ type }}
+          </label>
+        </div>
+        <div class="pokemon-specie">
+          <label class="pokemon-specie-title">Specie:</label>
+          <label class="pokemon-specie-name">{{ pokemon.specie }}</label>
+        </div>
       </div>
     </div>
     <div class="pokemon-stats">

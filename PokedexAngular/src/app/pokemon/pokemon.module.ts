@@ -1,7 +1,5 @@
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 import { NotFoundComponent } from '../core/not-found/not-found.component';
 import { PokemonCardComponent } from './pokemon-list/pokemon-card/pokemon-card.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
@@ -12,6 +10,7 @@ import { PokemonRoutingModule } from './pokemon-routing.module';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SelectComponent } from '../core/select/select.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -23,14 +22,14 @@ import { SelectComponent } from '../core/select/select.component';
     SelectComponent,
   ],
   imports: [
-    BrowserModule,
-    HttpClientModule,
+    PokemonRoutingModule,
+    CommonModule,
     FormsModule,
     InfiniteScrollModule,
     MatProgressBarModule,
     FontAwesomeModule,
   ],
-  exports: [PokemonRoutingModule],
+  exports: [],
   providers: [],
 })
 export class PokemonModule {}

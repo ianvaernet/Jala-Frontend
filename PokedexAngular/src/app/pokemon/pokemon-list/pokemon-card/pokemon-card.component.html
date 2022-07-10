@@ -6,13 +6,19 @@
   <img src="{{ pokemon.image }}" alt="{{ pokemon.name }}" />
   <p
     class="id"
-    [ngClass]="{ 'color-black': pokemon.background?.startsWith('#f') }"
+    [ngClass]="{
+      'color-black':
+        pokemon.background === 'white' || pokemon.background === 'yellow'
+    }"
   >
     {{ "#" + ("00" + pokemon.id).slice(-3) }}
   </p>
   <p
     class="title"
-    [ngClass]="{ 'color-black': pokemon.background?.startsWith('#f') }"
+    [ngClass]="{
+      'color-black':
+        pokemon.background === 'white' || pokemon.background === 'yellow'
+    }"
   >
     {{ pokemon.name }}
   </p>

@@ -34,13 +34,18 @@
 
     .pokemon-image {
       height: 300px;
-      border: 1px solid #ccc;
+      border: 3px solid #ccc;
       border-radius: 20px;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
     }
 
     .pokemon-data {
       max-width: 500px;
       text-align: justify;
+
+      .pokemon-description {
+        margin-top: 10px;
+      }
 
       .pokemon-types {
         margin-top: 15px;
@@ -52,7 +57,8 @@
         .pokemon-type-name {
           text-transform: uppercase;
           padding: 5px 15px;
-          background-color: #ccc;
+          color: #fff;
+          background-color: #555;
           border-radius: 10px;
           margin-left: 10px;
         }
@@ -68,7 +74,8 @@
         .pokemon-specie-name {
           text-transform: uppercase;
           padding: 5px 15px;
-          background-color: #ccc;
+          color: #fff;
+          background-color: #555;
           border-radius: 10px;
           margin-left: 10px;
         }

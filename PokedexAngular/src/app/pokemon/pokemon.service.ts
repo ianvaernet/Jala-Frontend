@@ -84,7 +84,7 @@ export class PokemonService {
         types: pokemonDetails.types.map((type) => type.type.name),
         specie: pokemonSpecie.egg_groups[0].name,
         image: this.getPokemonImageUri(id),
-        description: this.getPokemonDescription(pokemonSpecie),
+        descriptions: this.getPokemonDescriptions(pokemonSpecie),
         stats: pokemonDetails.stats.map((stat) => ({
           name: stat.stat.name,
           value: stat.base_stat,
@@ -104,12 +104,23 @@ export class PokemonService {
     );
   }
 
-  getPokemonDescription(pokemonSpecie: PokemonSpecie) {
-    const uniqueDescriptions = new Set(
-      pokemonSpecie.flavor_text_entries
-        .filter((entry) => entry.language.name === 'es')
-        .map((entry) => entry?.flavor_text)
-    );
-    return Array.from(uniqueDescriptions).join(' ');
+  getPokemonDescriptions(pokemonSpecie: PokemonSpecie) {
+    const languages = [
+      ['en', 'English'],
+      ['es', 'Spanish'],
+      ['fr', 'French'],
+    ];
+    const descriptions: Record<string, string> = {};
+    languages.forEach(([language, languageName]) => {
+      const uniqueDescriptions = new Set(
+        pokemonSpecie.flavor_text_entries
+          .filter((entry) => entry.language.name === language)
+          .map((entry) =>
+            entry?.flavor_text.replace(/\n/g, ' ').replace(/\f/g, ' ')
+          )
+      );
+      descriptions[languageName] = Array.from(uniqueDescriptions).join(' ');
+    });
+    return descriptions;
   }
 }

@@ -19,10 +19,22 @@
   <div class="content">
     <div class="pokemon">
       <div>
-        <img src="{{ pokemon.image }}" class="pokemon-image" />
+        <img
+          src="{{ pokemon.image }}"
+          class="pokemon-image"
+          [ngStyle]="{ 'border-color': pokemon.color }"
+        />
       </div>
       <div class="pokemon-data">
-        <p>{{ pokemon.description }}</p>
+        <app-select
+          label="Language:"
+          [options]="descriptionLanguageOptions"
+          [selectedOption]="descriptionLanguage"
+          (selectChange)="onDescriptionLanguageChange($event)"
+        ></app-select>
+        <p class="pokemon-description">
+          {{ pokemon.descriptions[descriptionLanguage] }}
+        </p>
         <div class="pokemon-types">
           <label class="pokemon-type-title">Types:</label>
           <label *ngFor="let type of pokemon.types" class="pokemon-type-name">

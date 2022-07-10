@@ -51,7 +51,7 @@ export type Pokemon = {
   types: string[];
   specie: string;
   image: string;
-  description?: string;
+  descriptions: Record<string, string>;
   stats: { name: string; value: number }[];
   color: string;
 };

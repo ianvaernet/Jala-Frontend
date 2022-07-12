@@ -21,7 +21,6 @@ export class PokemonDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id')!;
     this.pokemon = this.route.snapshot.data['pokemon'];
-    console.log(this.pokemon);
     const availableDescriptionLanguages = Object.keys(
       this.pokemon.descriptions
     );

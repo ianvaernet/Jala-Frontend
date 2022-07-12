@@ -6,6 +6,7 @@ import {
   ListPokemonsResult,
   Pokemon,
   PokemonDetails,
+  PokemonEvolutionChain,
   PokemonSpecie,
 } from './types';
 
@@ -66,7 +67,6 @@ export class PokemonService {
     const pokemonColors = this.http.get<Record<string, string>>(
       '/assets/pokemons-colors.json'
     );
-
     return pokemonColors;
   }
 
@@ -90,6 +90,7 @@ export class PokemonService {
           value: stat.base_stat,
         })),
         color: pokemonSpecie.color.name,
+        evolutionChainId: this.getIdFromUrl(pokemonSpecie.evolution_chain.url),
       }))
     );
     return pokemon;
@@ -122,5 +123,31 @@ export class PokemonService {
       descriptions[languageName] = Array.from(uniqueDescriptions).join(' ');
     });
     return descriptions;
+  }
+
+  getPokemonEvolutionChain(
+    evolutionChainId: string
+  ): Observable<Pokemon['evolutionChain']> {
+    return this.http
+      .get<PokemonEvolutionChain>(
+        `${this.API_URL}/evolution-chain/${evolutionChainId}`
+      )
+      .pipe(
+        map((response) => {
+          let evolution = response.chain;
+          const evolutions = [];
+          while (evolution) {
+            const { species } = evolution;
+            const id = this.getIdFromUrl(species.url);
+            evolutions.push({
+              id,
+              name: species.name,
+              image: this.getPokemonImageUri(id),
+            });
+            evolution = evolution.evolves_to[0];
+          }
+          return evolutions;
+        })
+      );
   }
 }

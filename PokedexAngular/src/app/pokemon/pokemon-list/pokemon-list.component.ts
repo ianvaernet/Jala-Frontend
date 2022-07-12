@@ -34,7 +34,7 @@ export class PokemonListComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  async ngOnInit() {
+  ngOnInit() {
     this.pokemons = this.route.snapshot.data['pokemons'];
     this.pokemonsToDisplay = this.pokemons;
     this.offset += this.limit;

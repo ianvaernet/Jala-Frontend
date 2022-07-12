@@ -36,13 +36,22 @@ export type PokemonSpecie = {
   capture_rate: number;
   color: { name: string; url: string };
   egg_groups: { name: string; url: string }[];
-  evolution_chain: unknown;
+  evolution_chain: { url: string };
   evolves_from_species: unknown;
   flavor_text_entries: {
     flavor_text: string;
     language: { name: string };
     version: unknown;
   }[];
+};
+
+type PokemonEvolution = {
+  evolution_details: { trigger: { name: string } }[];
+  evolves_to: PokemonEvolution[];
+  species: { name: string; url: string };
+};
+export type PokemonEvolutionChain = {
+  chain: PokemonEvolution;
 };
 
 export type Pokemon = {
@@ -54,6 +63,8 @@ export type Pokemon = {
   descriptions: Record<string, string>;
   stats: { name: string; value: number }[];
   color: string;
+  evolutionChainId: string;
+  evolutionChain?: { id: string; name: string; image: string }[];
 };
 
 type PokemonFromApi = { name: string; url: string };

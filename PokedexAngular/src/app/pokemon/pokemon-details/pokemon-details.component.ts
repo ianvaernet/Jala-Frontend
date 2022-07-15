@@ -10,7 +10,6 @@ import { faAnglesLeft } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./pokemon-details.component.scss'],
 })
 export class PokemonDetailsComponent implements OnInit {
-  id: string = '1';
   pokemon!: Pokemon;
   faAnglesLeft = faAnglesLeft;
   descriptionLanguage: string = 'Spanish';
@@ -19,7 +18,6 @@ export class PokemonDetailsComponent implements OnInit {
   constructor(private location: Location, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id')!;
     this.route.data.subscribe((data) => {
       this.pokemon = data['pokemon'];
       const availableDescriptionLanguages = Object.keys(

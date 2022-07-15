@@ -11,7 +11,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SelectComponent } from '../core/select/select.component';
 import { CommonModule } from '@angular/common';
+import { MatDialogModule } from '@angular/material/dialog';
 import { PokemonEvolutionChainComponent } from './pokemon-details/pokemon-evolution-chain/pokemon-evolution-chain.component';
+import { AddPokemonModalComponent } from './pokemon-list/add-pokemon-modal/add-pokemon-modal.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { PokemonEvolutionChainComponent } from './pokemon-details/pokemon-evolut
     PokemonDetailsComponent,
     SelectComponent,
     PokemonEvolutionChainComponent,
+    AddPokemonModalComponent,
   ],
   imports: [
     PokemonRoutingModule,
@@ -30,6 +33,7 @@ import { PokemonEvolutionChainComponent } from './pokemon-details/pokemon-evolut
     InfiniteScrollModule,
     MatProgressBarModule,
     FontAwesomeModule,
+    MatDialogModule
   ],
   exports: [],
   providers: [],

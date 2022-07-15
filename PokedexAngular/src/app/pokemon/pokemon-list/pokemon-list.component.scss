@@ -1,10 +1,26 @@
 .list-header {
   margin-top: 15px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
+  justify-content: space-between;
+
+  .list-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .add-pokemon-button {
+    margin-right: 40px;
+    color: white;
+    background-color: #555;
+    border-radius: 7px;
+    padding: 2px 10px;
+
+    &:hover {
+      background-color: #444;
+    }
+  }
 }
 
 .cards-container {

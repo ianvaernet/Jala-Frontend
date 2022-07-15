@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { faPlus, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { PokemonService } from '../pokemon.service';
 import { ListablePokemon, Order } from '../types';
+import { AddPokemonModalComponent } from './add-pokemon-modal/add-pokemon-modal.component';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -28,10 +31,12 @@ export class PokemonListComponent implements OnInit {
     { name: 'Generation 4', value: '4' },
     { name: 'Generation 5', value: '5' },
   ];
+  addIcon = faPlus;
 
   constructor(
     private pokemonService: PokemonService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -86,5 +91,14 @@ export class PokemonListComponent implements OnInit {
     this.pokemons = [];
     this.offset = 0;
     this.getMorePokemons();
+  }
+
+  onAddPokemon() {
+    this.dialog
+      .open(AddPokemonModalComponent)
+      .afterClosed()
+      .subscribe((pokemon) => {
+        // this.pokemonService.addPokemon(pokemon);
+      });
   }
 }

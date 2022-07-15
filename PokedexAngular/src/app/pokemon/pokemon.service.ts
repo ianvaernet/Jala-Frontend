@@ -110,8 +110,8 @@ export class PokemonService {
 
   getPokemonDescriptions(pokemonSpecie: PokemonSpecie) {
     const languages = [
-      ['en', 'English'],
       ['es', 'Spanish'],
+      ['en', 'English'],
       ['fr', 'French'],
     ];
     const descriptions: Record<string, string> = {};

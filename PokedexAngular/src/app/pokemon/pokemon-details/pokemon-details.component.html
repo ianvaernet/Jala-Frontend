@@ -61,21 +61,10 @@
         ></mat-progress-bar>
       </div>
     </div>
-    <div>
-      <div *ngFor="let evolution of pokemon.evolutionChain">
-        <div class="evolution-container">
-          <div class="evolution-image-container">
-            <img
-              src="{{ evolution.image }}"
-              class="evolution-image"
-              [ngStyle]="{ 'border-color': pokemon.color }"
-            />
-          </div>
-          <div class="evolution-name-container">
-            <label class="evolution-name">{{ evolution.name }}</label>
-          </div>
-        </div>
-      </div>
-    </div>
+    <app-pokemon-evolution-chain
+      [evolutionChain]="pokemon.evolutionChain"
+      [color]="getPokemonNameColor()"
+      [background]="pokemon.color"
+    ></app-pokemon-evolution-chain>
   </div>
 </div>

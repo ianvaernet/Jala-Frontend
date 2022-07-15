@@ -1,0 +1,25 @@
+<div
+  class="evolution-chain-container"
+  [ngStyle]="{ 'background-color': background }"
+>
+  <div
+    *ngFor="let evolution of evolutionChain; let i = index"
+    class="evolution-container"
+  >
+    <i *ngIf="i !== 0" class="arrow" [ngStyle]="{ 'border-color': color }"></i>
+    <div class="evolution-step">
+      <div class="evolution-image-container">
+        <img
+          src="{{ evolution.image }}"
+          class="evolution-image"
+          [ngStyle]="{ 'border-color': color }"
+        />
+      </div>
+      <div class="evolution-name-container">
+        <label class="evolution-name" [ngStyle]="{color}">
+          {{ evolution.name }}
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

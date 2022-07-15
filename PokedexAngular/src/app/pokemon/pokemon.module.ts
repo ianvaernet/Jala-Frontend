@@ -11,6 +11,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SelectComponent } from '../core/select/select.component';
 import { CommonModule } from '@angular/common';
+import { PokemonEvolutionChainComponent } from './pokemon-details/pokemon-evolution-chain/pokemon-evolution-chain.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { CommonModule } from '@angular/common';
     NotFoundComponent,
     PokemonDetailsComponent,
     SelectComponent,
+    PokemonEvolutionChainComponent,
   ],
   imports: [
     PokemonRoutingModule,

@@ -57,7 +57,7 @@ export type PokemonEvolutionChain = {
 export type Pokemon = {
   id: number;
   name: string;
-  types: string[];
+  types: { name: string; color: string }[];
   specie: string;
   image: string;
   descriptions: Record<string, string>;

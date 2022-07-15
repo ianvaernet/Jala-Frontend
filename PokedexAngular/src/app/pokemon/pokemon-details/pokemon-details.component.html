@@ -37,8 +37,12 @@
         </p>
         <div class="pokemon-types">
           <label class="pokemon-type-title">Types:</label>
-          <label *ngFor="let type of pokemon.types" class="pokemon-type-name">
-            {{ type }}
+          <label
+            *ngFor="let type of pokemon.types"
+            class="pokemon-type-name"
+            [ngStyle]="{ 'background-color': type.color }"
+          >
+            {{ type.name }}
           </label>
         </div>
         <div class="pokemon-specie">

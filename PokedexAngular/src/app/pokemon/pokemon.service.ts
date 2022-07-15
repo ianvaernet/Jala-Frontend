@@ -59,7 +59,7 @@ export class PokemonService {
   }
 
   getPokemonImageUri(id: string) {
-    const imageId = ('00' + id).slice(-3); // para 1 => 001
+    const imageId = ('00' + id).slice(-3);
     return `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${imageId}.png`;
   }
 
@@ -81,7 +81,10 @@ export class PokemonService {
       map(([pokemonDetails, pokemonSpecie]) => ({
         id: pokemonDetails.id,
         name: pokemonDetails.name,
-        types: pokemonDetails.types.map((type) => type.type.name),
+        types: pokemonDetails.types.map((type) => ({
+          name: type.type.name,
+          color: this.typeColors[type.type.name],
+        })),
         specie: pokemonSpecie.egg_groups[0].name,
         image: this.getPokemonImageUri(id),
         descriptions: this.getPokemonDescriptions(pokemonSpecie),
@@ -150,4 +153,25 @@ export class PokemonService {
         })
       );
   }
+
+  typeColors: Record<string, string> = {
+    normal: '#A8A77A',
+    fire: '#EE8130',
+    water: '#6390F0',
+    electric: '#F7D02C',
+    grass: '#7AC74C',
+    ice: '#96D9D6',
+    fighting: '#C22E28',
+    poison: '#A33EA1',
+    ground: '#E2BF65',
+    flying: '#A98FF3',
+    psychic: '#F95587',
+    bug: '#A6B91A',
+    rock: '#B6A136',
+    ghost: '#735797',
+    dragon: '#6F35FC',
+    dark: '#705746',
+    steel: '#B7B7CE',
+    fairy: '#D685AD',
+  };
 }

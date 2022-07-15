@@ -30,7 +30,7 @@ export class PokemonService {
             ...pokemon,
             id,
             image: this.getPokemonImageUri(id),
-            background: pokemonColors[id],
+            color: pokemonColors[id],
           };
         });
       })
@@ -152,6 +152,19 @@ export class PokemonService {
           return evolutions;
         })
       );
+  }
+
+  getCustomPokemons() {
+    const pokemons = localStorage.getItem('pokemons');
+    return JSON.parse(pokemons || '[]');
+  }
+
+  saveCustomPokemon(pokemon: Record<string, string>) {
+    if (pokemon && pokemon['name'] && pokemon['color'] && pokemon['type']) {
+      const pokemons = this.getCustomPokemons();
+      pokemons.push({ ...pokemon, id: (1000 + pokemons.length).toString() });
+      localStorage.setItem('pokemons', JSON.stringify(pokemons));
+    }
   }
 
   typeColors: Record<string, string> = {

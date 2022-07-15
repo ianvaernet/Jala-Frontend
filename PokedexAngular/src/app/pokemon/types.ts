@@ -3,7 +3,7 @@ export type ListablePokemon = {
   name: string;
   url: string;
   image: string;
-  background: string;
+  color: string;
 };
 
 export type PokemonDetails = {

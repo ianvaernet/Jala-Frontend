@@ -1,1 +1,26 @@
-<p>add-pokemon-modal works!</p>
+<div>
+  <h2>Add Pokemon</h2>
+  <form [formGroup]="addPokemonForm" (ngSubmit)="onSubmit()" class="form">
+    <mat-form-field appearance="outline">
+      <mat-label for="name">Name</mat-label>
+      <input matInput id="name" formControlName="name" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label for="description">Description</mat-label>
+      <input matInput id="description" formControlName="description" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label for="name">Image</mat-label>
+      <input matInput id="image" formControlName="image" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label for="color">Color</mat-label>
+      <input matInput type="color" id="color" formControlName="color" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label for="type">Type</mat-label>
+      <input matInput id="type" formControlName="type" />
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Add</button>
+  </form>
+</div>

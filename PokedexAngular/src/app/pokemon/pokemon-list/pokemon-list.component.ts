@@ -98,7 +98,7 @@ export class PokemonListComponent implements OnInit {
       .open(AddPokemonModalComponent)
       .afterClosed()
       .subscribe((pokemon) => {
-        // this.pokemonService.addPokemon(pokemon);
+        this.pokemonService.saveCustomPokemon(pokemon);
       });
   }
 }

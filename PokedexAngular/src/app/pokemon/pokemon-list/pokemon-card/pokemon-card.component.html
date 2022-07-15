@@ -1,23 +1,21 @@
 <div
   class="card"
-  [ngStyle]="{ 'background-color': pokemon.background }"
+  [ngStyle]="{ 'background-color': pokemon.color }"
   (click)="goToPokemonDetails()"
 >
   <img src="{{ pokemon.image }}" alt="{{ pokemon.name }}" />
   <p
     class="id"
     [ngClass]="{
-      'color-black':
-        pokemon.background === 'white' || pokemon.background === 'yellow'
+      'color-black': pokemon.color === 'white' || pokemon.color === 'yellow'
     }"
   >
-    {{ "#" + ("00" + pokemon.id).slice(-3) }}
+    {{ "#" + ("000" + pokemon.id).slice(-4) }}
   </p>
   <p
     class="title"
     [ngClass]="{
-      'color-black':
-        pokemon.background === 'white' || pokemon.background === 'yellow'
+      'color-black': pokemon.color === 'white' || pokemon.color === 'yellow'
     }"
   >
     {{ pokemon.name }}

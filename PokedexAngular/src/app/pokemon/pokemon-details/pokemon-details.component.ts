@@ -20,13 +20,15 @@ export class PokemonDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id')!;
-    this.pokemon = this.route.snapshot.data['pokemon'];
-    const availableDescriptionLanguages = Object.keys(
-      this.pokemon.descriptions
-    );
-    this.descriptionLanguageOptions = availableDescriptionLanguages.map(
-      (lang) => ({ name: lang, value: lang })
-    );
+    this.route.data.subscribe((data) => {
+      this.pokemon = data['pokemon'];
+      const availableDescriptionLanguages = Object.keys(
+        this.pokemon.descriptions
+      );
+      this.descriptionLanguageOptions = availableDescriptionLanguages.map(
+        (lang) => ({ name: lang, value: lang })
+      );
+    });
   }
 
   getPokemonNameColor() {

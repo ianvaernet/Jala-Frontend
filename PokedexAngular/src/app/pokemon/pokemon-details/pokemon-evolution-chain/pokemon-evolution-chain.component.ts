@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pokemon } from '../../types';
 
 @Component({
@@ -11,7 +12,11 @@ export class PokemonEvolutionChainComponent implements OnInit {
   @Input() color!: string;
   @Input() background!: string;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  goToPokemon(id: string) {
+    this.router.navigate([`/pokedex/${id}`]);
+  }
 }

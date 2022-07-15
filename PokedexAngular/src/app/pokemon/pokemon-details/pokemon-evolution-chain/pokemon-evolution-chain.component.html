@@ -7,7 +7,7 @@
     class="evolution-container"
   >
     <i *ngIf="i !== 0" class="arrow" [ngStyle]="{ 'border-color': color }"></i>
-    <div class="evolution-step">
+    <div class="evolution-step" (click)="goToPokemon(evolution.id)">
       <div class="evolution-image-container">
         <img
           src="{{ evolution.image }}"

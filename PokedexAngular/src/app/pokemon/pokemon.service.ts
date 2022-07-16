@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { forkJoin, map, Observable } from 'rxjs';
+import { forkJoin, map, Observable, tap } from 'rxjs';
 import {
   ListPokemonsByGenerationResult,
   ListPokemonsResult,
@@ -22,19 +22,28 @@ export class PokemonService {
       ? this.getPokemonsFromGeneration(generation)
       : this.getPokemonsData(limit, offset);
     const backgroundColors = this.getPokemonBackgroundColors();
-    const pokemons = forkJoin([pokemonsData, backgroundColors]).pipe(
-      map(([pokemons, pokemonColors]) => {
-        return pokemons.map((pokemon) => {
-          const id = this.getIdFromUrl(pokemon.url);
-          return {
-            ...pokemon,
-            id,
-            image: this.getPokemonImageUri(id),
-            color: pokemonColors[id],
-          };
-        });
-      })
-    );
+    const pokemons = forkJoin([pokemonsData, backgroundColors])
+      .pipe(
+        map(([pokemons, pokemonColors]) => {
+          return pokemons.map((pokemon) => {
+            const id = this.getIdFromUrl(pokemon.url);
+            return {
+              ...pokemon,
+              id,
+              image: this.getPokemonImageUri(id),
+              color: pokemonColors[id],
+            };
+          });
+        })
+      )
+      .pipe(
+        tap((pokemons) => {
+          if (!generation) {
+            pokemons.unshift(...this.getCustomPokemons());
+          }
+          return pokemons;
+        })
+      );
     return pokemons;
   }
 

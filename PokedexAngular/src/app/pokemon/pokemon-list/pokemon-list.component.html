@@ -25,7 +25,13 @@
         (selectChange)="onGenerationChange($event)"
       ></app-select>
     </div>
-    <button class="add-pokemon-button" (click)="onAddPokemon()">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onAddPokemon()"
+      class="add-pokemon-button"
+    >
+      <!-- <button class="add-pokemon-button" (click)="onAddPokemon()"> -->
       Add pokemon <fa-icon [icon]="addIcon"></fa-icon>
     </button>
   </div>

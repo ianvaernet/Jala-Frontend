@@ -10,10 +10,18 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class AddPokemonModalComponent {
   addPokemonForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(4)]),
-    description: new FormControl(''),
+    descriptionSpanish: new FormControl(''),
+    descriptionEnglish: new FormControl(''),
+    descriptionFrench: new FormControl(''),
     image: new FormControl('', [Validators.required]),
     color: new FormControl('', [Validators.required]),
     type: new FormControl('', [Validators.required]),
+    hp: new FormControl(0, [Validators.required]),
+    speed: new FormControl(0, [Validators.required]),
+    attack: new FormControl(0, [Validators.required]),
+    specialAttack: new FormControl(0, [Validators.required]),
+    defense: new FormControl(0, [Validators.required]),
+    specialDefense: new FormControl(0, [Validators.required]),
   });
 
   constructor(
@@ -22,6 +30,7 @@ export class AddPokemonModalComponent {
   ) {}
 
   onSubmit() {
+    console.log(this.addPokemonForm.value);
     this.dialogRef.close(this.addPokemonForm.value);
   }
 }

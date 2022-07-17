@@ -12,6 +12,10 @@
   flex-direction: column;
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 .row {
   display: flex;
   align-items: center;

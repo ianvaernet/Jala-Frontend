@@ -20,6 +20,7 @@ export class PokemonDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.route.data.subscribe((data) => {
       this.pokemon = data['pokemon'];
+      console.log(this.pokemon);
       const availableDescriptionLanguages = Object.keys(
         this.pokemon.descriptions
       );

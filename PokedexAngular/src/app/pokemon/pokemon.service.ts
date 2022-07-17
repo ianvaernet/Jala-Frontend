@@ -2,12 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { forkJoin, map, Observable, tap } from 'rxjs';
 import {
+  ListablePokemon,
   ListPokemonsByGenerationResult,
   ListPokemonsResult,
   Pokemon,
   PokemonDetails,
   PokemonEvolutionChain,
   PokemonSpecie,
+  PokemonTypeColors,
 } from './types';
 
 @Injectable({
@@ -17,7 +19,11 @@ export class PokemonService {
   private API_URL = 'https://pokeapi.co/api/v2';
   constructor(private http: HttpClient) {}
 
-  getPokemons(limit?: number, offset?: number, generation?: number) {
+  getPokemons(
+    limit?: number,
+    offset?: number,
+    generation?: number
+  ): Observable<ListablePokemon[]> {
     const pokemonsData = generation
       ? this.getPokemonsFromGeneration(generation)
       : this.getPokemonsData(limit, offset);
@@ -29,10 +35,10 @@ export class PokemonService {
             const id = this.getIdFromUrl(pokemon.url);
             return {
               ...pokemon,
-              id,
+              id: parseInt(id),
               image: this.getPokemonImageUri(id),
               color: pokemonColors[id],
-            };
+            } as ListablePokemon;
           });
         })
       )
@@ -92,7 +98,7 @@ export class PokemonService {
         name: pokemonDetails.name,
         types: pokemonDetails.types.map((type) => ({
           name: type.type.name,
-          color: this.typeColors[type.type.name],
+          color: PokemonTypeColors[type.type.name],
         })),
         specie: pokemonSpecie.egg_groups[0].name,
         image: this.getPokemonImageUri(id),
@@ -163,37 +169,48 @@ export class PokemonService {
       );
   }
 
-  getCustomPokemons() {
-    const pokemons = localStorage.getItem('pokemons');
-    return JSON.parse(pokemons || '[]');
+  getCustomPokemons(id?: string): Pokemon[] {
+    const pokemonsJSON = localStorage.getItem('pokemons');
+    const pokemons: any[] = JSON.parse(pokemonsJSON || '[]');
+    return pokemons.map((pokemon) => ({
+      ...pokemon,
+      types: pokemon.types.map((type: string) => ({
+        name: type,
+        color: PokemonTypeColors[type],
+      })),
+    }));
   }
 
-  saveCustomPokemon(pokemon: Record<string, string>) {
-    if (pokemon && pokemon['name'] && pokemon['color'] && pokemon['type']) {
-      const pokemons = this.getCustomPokemons();
-      pokemons.push({ ...pokemon, id: (1000 + pokemons.length).toString() });
-      localStorage.setItem('pokemons', JSON.stringify(pokemons));
-    }
+  getCustomPokemon(id: string) {
+    const pokemons = this.getCustomPokemons();
+    return pokemons.find((pokemon) => pokemon.id === parseInt(id));
   }
 
-  typeColors: Record<string, string> = {
-    normal: '#A8A77A',
-    fire: '#EE8130',
-    water: '#6390F0',
-    electric: '#F7D02C',
-    grass: '#7AC74C',
-    ice: '#96D9D6',
-    fighting: '#C22E28',
-    poison: '#A33EA1',
-    ground: '#E2BF65',
-    flying: '#A98FF3',
-    psychic: '#F95587',
-    bug: '#A6B91A',
-    rock: '#B6A136',
-    ghost: '#735797',
-    dragon: '#6F35FC',
-    dark: '#705746',
-    steel: '#B7B7CE',
-    fairy: '#D685AD',
-  };
+  saveCustomPokemon(pokemon: any) {
+    const pokemons = this.getCustomPokemons();
+    pokemon.descriptions = {
+      Spanish: pokemon.descriptionSpanish!,
+      English: pokemon.descriptionEnglish!,
+      French: pokemon.descriptionFrench!,
+    };
+    pokemon.stats = [
+      { name: 'hp', value: pokemon.hp },
+      { name: 'speed', value: pokemon.speed },
+      { name: 'attack', value: pokemon.attack },
+      { name: 'specialAttack', value: pokemon.specialAttack },
+      { name: 'defense', value: pokemon.defense },
+      { name: 'specialDefense', value: pokemon.specialDefense },
+    ];
+    delete pokemon.descriptionSpanish;
+    delete pokemon.descriptionEnglish;
+    delete pokemon.descriptionFrench;
+    delete pokemon.hp;
+    delete pokemon.speed;
+    delete pokemon.attack;
+    delete pokemon.specialAttack;
+    delete pokemon.defense;
+    delete pokemon.specialDefense;
+    pokemons.push({ ...pokemon, id: 1000 + pokemons!.length });
+    localStorage.setItem('pokemons', JSON.stringify(pokemons));
+  }
 }

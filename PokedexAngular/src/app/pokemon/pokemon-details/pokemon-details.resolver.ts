@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
-import { map, Observable, switchMap } from 'rxjs';
+import { map, Observable, of, switchMap } from 'rxjs';
 import { PokemonService } from '../pokemon.service';
 import { Pokemon } from '../types';
 
@@ -9,14 +9,19 @@ export class PokemonDetailsResolver implements Resolve<Pokemon> {
   constructor(private pokemonService: PokemonService) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<Pokemon> {
-    return this.pokemonService
-      .getPokemon(route.paramMap.get('id')!)
-      .pipe(
-        switchMap((pokemon) =>
-          this.pokemonService
-            .getPokemonEvolutionChain(pokemon.evolutionChainId)
-            .pipe(map((evolutionChain) => ({ ...pokemon, evolutionChain })))
-        )
-      );
+    const id = route.paramMap.get('id')!;
+    if (parseInt(id) < 1000) {
+      return this.pokemonService
+        .getPokemon(id)
+        .pipe(
+          switchMap((pokemon) =>
+            this.pokemonService
+              .getPokemonEvolutionChain(pokemon.evolutionChainId)
+              .pipe(map((evolutionChain) => ({ ...pokemon, evolutionChain })))
+          )
+        );
+    } else {
+      return of(this.pokemonService.getCustomPokemon(id)!);
+    }
   }
 }

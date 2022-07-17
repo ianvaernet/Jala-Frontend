@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { faPlus, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { PokemonService } from '../pokemon.service';
 import { ListablePokemon, Order } from '../types';
 import { AddPokemonModalComponent } from './add-pokemon-modal/add-pokemon-modal.component';
@@ -65,7 +65,9 @@ export class PokemonListComponent implements OnInit {
   onSearchChange(search: string) {
     this.search = search;
     this.pokemonsToDisplay = search
-      ? this.pokemons.filter((pokemon) => pokemon.name.includes(search))
+      ? this.pokemons.filter((pokemon) =>
+          pokemon.name.toLowerCase().includes(search.toLowerCase())
+        )
       : this.pokemons;
   }
 
@@ -98,7 +100,9 @@ export class PokemonListComponent implements OnInit {
       .open(AddPokemonModalComponent)
       .afterClosed()
       .subscribe((pokemon) => {
-        this.pokemonService.saveCustomPokemon(pokemon);
+        if (pokemon) {
+          this.pokemonService.saveCustomPokemon(pokemon);
+        }
       });
   }
 }

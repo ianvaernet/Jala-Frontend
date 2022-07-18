@@ -1,0 +1,87 @@
+{
+  "configVersion": 1,
+  "timestamp": 1658182056102,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/448.41857d495f1425ac.js",
+        "/favicon.ico",
+        "/index.html",
+        "/main.545e0c8cf75f01cc.js",
+        "/manifest.webmanifest",
+        "/polyfills.14d045a8dfd66aa5.js",
+        "/runtime.9486a7f911e086d4.js",
+        "/styles.3f5ef1e0f5d9f4f0.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png",
+        "/assets/not-found.jpg",
+        "/assets/pokemons-colors.json"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/448.41857d495f1425ac.js": "1071ba28a63f57570b9434457956fba2c1ab3fb8",
+    "/assets/icons/icon-128x128.png": "a73bca43c37ac26dbac5b33bee55529eef11d5fb",
+    "/assets/icons/icon-144x144.png": "e66a9b96f8474854dc0573321990b1288d15cab8",
+    "/assets/icons/icon-152x152.png": "5f00700d06f4b0908bd531d09645c2d681162107",
+    "/assets/icons/icon-192x192.png": "a8edca006d7a2634702068b2e76ab146adaf2c63",
+    "/assets/icons/icon-384x384.png": "f7777b99626b5ec48c93acff1ae495972b16b1d8",
+    "/assets/icons/icon-512x512.png": "fd05b659d7c94f6d99a0a765420f5d34a77912c9",
+    "/assets/icons/icon-72x72.png": "855cde3d9a466005d58f059e3c4f834eba412fb9",
+    "/assets/icons/icon-96x96.png": "a93762638ce278096e6001a768110a0bc930de24",
+    "/assets/not-found.jpg": "70b8cd62afec71fc0a20b13c67c9bc76cf5ae96a",
+    "/assets/pokemons-colors.json": "8e76c4f7ffed7164a77713f5fa5408a6f9106e70",
+    "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/index.html": "9d3d99e2653691c3110a98654dd2aeca49d8e696",
+    "/main.545e0c8cf75f01cc.js": "6fa48751764fe0d4f215c92c4e4b63d3cbcfcbd5",
+    "/manifest.webmanifest": "dc01fe243b2ee3b16d1a253bd57d00201bde5fd5",
+    "/polyfills.14d045a8dfd66aa5.js": "21aa32e58fe5b0610329354f3eb943c5438528a0",
+    "/runtime.9486a7f911e086d4.js": "01bb3c644a0d229bdb5abdfdb15133402b09e38c",
+    "/styles.3f5ef1e0f5d9f4f0.css": "60983354afde13abdb1172164771f70fbc63f178"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}

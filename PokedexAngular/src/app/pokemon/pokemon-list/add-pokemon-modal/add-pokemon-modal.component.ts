@@ -1,8 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import {
   AbstractControl,
-  FormControl,
-  FormGroup,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -14,20 +14,20 @@ import { PokemonTypes } from '../../types';
   styleUrls: ['./add-pokemon-modal.component.scss'],
 })
 export class AddPokemonModalComponent {
-  addPokemonForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(4)]),
-    descriptionSpanish: new FormControl('', [Validators.required]),
-    descriptionEnglish: new FormControl('', [Validators.required]),
-    descriptionFrench: new FormControl('', [Validators.required]),
-    image: new FormControl('', [Validators.required]),
-    color: new FormControl('', [Validators.required]),
-    types: new FormControl('', [Validators.required]),
-    hp: new FormControl(0, [Validators.required]),
-    speed: new FormControl(0, [Validators.required]),
-    attack: new FormControl(0, [Validators.required]),
-    specialAttack: new FormControl(0, [Validators.required]),
-    defense: new FormControl(0, [Validators.required]),
-    specialDefense: new FormControl(0, [Validators.required]),
+  addPokemonForm = new UntypedFormGroup({
+    name: new UntypedFormControl('', [Validators.required, Validators.minLength(4)]),
+    descriptionSpanish: new UntypedFormControl('', [Validators.required]),
+    descriptionEnglish: new UntypedFormControl('', [Validators.required]),
+    descriptionFrench: new UntypedFormControl('', [Validators.required]),
+    image: new UntypedFormControl('', [Validators.required]),
+    color: new UntypedFormControl('', [Validators.required]),
+    types: new UntypedFormControl('', [Validators.required]),
+    hp: new UntypedFormControl(0, [Validators.required]),
+    speed: new UntypedFormControl(0, [Validators.required]),
+    attack: new UntypedFormControl(0, [Validators.required]),
+    specialAttack: new UntypedFormControl(0, [Validators.required]),
+    defense: new UntypedFormControl(0, [Validators.required]),
+    specialDefense: new UntypedFormControl(0, [Validators.required]),
   });
   pokemonTypes = PokemonTypes;
 

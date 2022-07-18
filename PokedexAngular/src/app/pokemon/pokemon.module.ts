@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const AngularMaterial = [
   MatDialogModule,
@@ -27,6 +28,7 @@ const AngularMaterial = [
   MatButtonModule,
   MatSliderModule,
   MatSelectModule,
+  MatSnackBarModule,
 ];
 @NgModule({
   declarations: [

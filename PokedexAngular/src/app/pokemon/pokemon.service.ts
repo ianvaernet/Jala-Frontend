@@ -44,7 +44,7 @@ export class PokemonService {
       )
       .pipe(
         tap((pokemons) => {
-          if (!generation) {
+          if (!generation && !offset) {
             pokemons.unshift(...this.getCustomPokemons());
           }
           return pokemons;

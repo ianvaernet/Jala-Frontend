@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { PokemonService } from '../pokemon.service';
@@ -36,7 +37,8 @@ export class PokemonListComponent implements OnInit {
   constructor(
     private pokemonService: PokemonService,
     private route: ActivatedRoute,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -102,6 +104,11 @@ export class PokemonListComponent implements OnInit {
       .subscribe((pokemon) => {
         if (pokemon) {
           this.pokemonService.saveCustomPokemon(pokemon);
+          this.snackBar.open(
+            'Pokemon successfully added to the pokedex',
+            'Close'
+          );
+          this.pokemons.unshift(pokemon);
         }
       });
   }

@@ -105,8 +105,11 @@ export class PokemonListComponent implements OnInit {
         if (pokemon) {
           this.pokemonService.saveCustomPokemon(pokemon);
           this.snackBar.open(
-            'Pokemon successfully added to the pokedex',
-            'Close'
+            `${pokemon.name} successfully added to the pokedex`,
+            'Close',
+            {
+              duration: 3000,
+            }
           );
           this.pokemons.unshift(pokemon);
         }

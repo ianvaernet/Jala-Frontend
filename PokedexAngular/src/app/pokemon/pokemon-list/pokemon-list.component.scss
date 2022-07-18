@@ -2,10 +2,12 @@
   margin-top: 15px;
   margin-bottom: 10px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 
   .list-controls {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 15px;
   }

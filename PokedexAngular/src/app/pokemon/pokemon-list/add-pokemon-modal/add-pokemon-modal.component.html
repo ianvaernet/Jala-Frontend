@@ -5,6 +5,9 @@
       <mat-form-field appearance="outline" class="standard-width">
         <mat-label for="name">Name</mat-label>
         <input matInput id="name" formControlName="name" />
+        <mat-error *ngIf="addPokemonForm.controls['name'].invalid">
+          {{ getErrorMessage() }}
+        </mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline" class="standard-width">
         <mat-label for="types">Types</mat-label>
@@ -22,6 +25,9 @@
             {{ type }}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="addPokemonForm.controls['name'].invalid">
+          {{ getErrorMessage() }}
+        </mat-error>
       </mat-form-field>
     </div>
 
@@ -29,10 +35,16 @@
       <mat-form-field appearance="outline" class="standard-width">
         <mat-label for="color">Color</mat-label>
         <input matInput type="color" id="color" formControlName="color" />
+        <mat-error *ngIf="addPokemonForm.controls['name'].invalid">
+          {{ getErrorMessage() }}
+        </mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline" class="standard-width">
         <mat-label for="name">Image URL</mat-label>
         <input matInput id="image" formControlName="image" />
+        <mat-error *ngIf="addPokemonForm.controls['name'].invalid">
+          {{ getErrorMessage() }}
+        </mat-error>
       </mat-form-field>
     </div>
 
@@ -45,6 +57,9 @@
           formControlName="descriptionSpanish"
           rows="3"
         ></textarea>
+        <mat-error *ngIf="addPokemonForm.controls['name'].invalid">
+          {{ getErrorMessage() }}
+        </mat-error>
       </mat-form-field>
       <div class="column">
         <div class="row between standard-width">
@@ -85,6 +100,9 @@
           formControlName="descriptionEnglish"
           rows="3"
         ></textarea>
+        <mat-error *ngIf="addPokemonForm.controls['name'].invalid">
+          {{ getErrorMessage() }}
+        </mat-error>
       </mat-form-field>
       <div class="column">
         <div class="row between standard-width">
@@ -125,6 +143,9 @@
           formControlName="descriptionFrench"
           rows="3"
         ></textarea>
+        <mat-error *ngIf="addPokemonForm.controls['name'].invalid">
+          {{ getErrorMessage() }}
+        </mat-error>
       </mat-form-field>
 
       <div class="column">
